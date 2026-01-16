@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islam Amir - Machine Learning Engineer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="profile">
+            <div class="profile-image">
+                <img src="assets/profile.jpg" alt="Islam Amir Mohamed Ali">
+            </div>
+            <h1 class="profile-name">Islam Amir<br>Mohamed Ali</h1>
+            <p class="profile-title">Machine Learning Engineer</p>
+        </div>
+        
+        <nav class="nav">
+            <a href="#home" class="nav-link active" data-section="home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#about" class="nav-link" data-section="about">
+                <i class="fas fa-user"></i>
+                <span>About</span>
+            </a>
+            <a href="#skills" class="nav-link" data-section="skills">
+                <i class="fas fa-code"></i>
+                <span>Skills</span>
+            </a>
+            <a href="#projects" class="nav-link" data-section="projects">
+                <i class="fas fa-folder"></i>
+                <span>Projects</span>
+            </a>
+            <a href="#courses" class="nav-link" data-section="courses">
+                <i class="fas fa-certificate"></i>
+                <span>Courses</span>
+            </a>
+            <a href="#contact" class="nav-link" data-section="contact">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="home-content">
+                <div class="home-text">
+                    <h1 class="hero-title">Data-Driven Solutions,<br>Intelligent Future.</h1>
+                    <p class="hero-subtitle"></p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                        <a href="#projects" class="btn btn-secondary">View Projects</a>
+                        <a href="assets/cv.pdf" class="btn btn-secondary" download><i class="fas fa-download"></i> Download CV</a>
+                    </div>
+                </div>
+                <div class="home-visual">
+                    <div class="neural-network brain-network">
+                        <svg viewBox="0 0 600 400" class="network-svg" id="brainNetwork">
+                            <defs>
+                                <!-- Glow filters -->
+                                <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <filter id="glowOrange" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                                <!-- Radial gradient for background effect -->
+                                <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" style="stop-color:#1a3a5c;stop-opacity:0.3" />
+                                    <stop offset="100%" style="stop-color:#0d1117;stop-opacity:0" />
+                                </radialGradient>
+                            </defs>
+                            
+                            <!-- Background glow -->
+                            <ellipse cx="300" cy="200" rx="280" ry="180" fill="url(#bgGlow)" class="bg-glow"/>
+                            
+                            <!-- Connections container (drawn first, behind nodes) -->
+                            <g class="connections"></g>
+                            
+                            <!-- Weight labels container -->
+                            <g class="weight-labels"></g>
+                            
+                            <!-- Brain-like neural network - 7 layers arranged in elliptical pattern -->
+                            <!-- Layer 1 - Input (left edge) - 4 nodes -->
+                            <g class="layer layer-1">
+                                <circle cx="40" cy="120" r="12" />
+                                <circle cx="40" cy="180" r="12" />
+                                <circle cx="40" cy="240" r="12" />
+                                <circle cx="40" cy="300" r="12" />
+                            </g>
+                            
+                            <!-- Layer 2 - 6 nodes -->
+                            <g class="layer layer-2">
+                                <circle cx="120" cy="80" r="11" />
+                                <circle cx="120" cy="140" r="11" />
+                                <circle cx="120" cy="200" r="11" />
+                                <circle cx="120" cy="260" r="11" />
+                                <circle cx="120" cy="320" r="11" />
+                            </g>
+                            
+                            <!-- Layer 3 - 7 nodes (expanding) -->
+                            <g class="layer layer-3">
+                                <circle cx="200" cy="50" r="10" />
+                                <circle cx="200" cy="100" r="10" />
+                                <circle cx="200" cy="150" r="10" />
+                                <circle cx="200" cy="200" r="10" />
+                                <circle cx="200" cy="250" r="10" />
+                                <circle cx="200" cy="300" r="10" />
+                                <circle cx="200" cy="350" r="10" />
+                            </g>
+                            
+                            <!-- Layer 4 - Center (widest) - 8 nodes -->
+                            <g class="layer layer-4">
+                                <circle cx="300" cy="40" r="12" />
+                                <circle cx="300" cy="90" r="12" />
+                                <circle cx="300" cy="140" r="12" />
+                                <circle cx="300" cy="190" r="12" />
+                                <circle cx="300" cy="240" r="12" />
+                                <circle cx="300" cy="290" r="12" />
+                                <circle cx="300" cy="340" r="12" />
+                            </g>
+                            
+                            <!-- Layer 5 - 7 nodes (contracting) -->
+                            <g class="layer layer-5">
+                                <circle cx="400" cy="50" r="10" />
+                                <circle cx="400" cy="100" r="10" />
+                                <circle cx="400" cy="150" r="10" />
+                                <circle cx="400" cy="200" r="10" />
+                                <circle cx="400" cy="250" r="10" />
+                                <circle cx="400" cy="300" r="10" />
+                                <circle cx="400" cy="350" r="10" />
+                            </g>
+                            
+                            <!-- Layer 6 - 5 nodes -->
+                            <g class="layer layer-6">
+                                <circle cx="480" cy="80" r="11" />
+                                <circle cx="480" cy="140" r="11" />
+                                <circle cx="480" cy="200" r="11" />
+                                <circle cx="480" cy="260" r="11" />
+                                <circle cx="480" cy="320" r="11" />
+                            </g>
+                            
+                            <!-- Layer 7 - Output (right edge) - 4 nodes -->
+                            <g class="layer layer-7">
+                                <circle cx="560" cy="120" r="12" />
+                                <circle cx="560" cy="180" r="12" />
+                                <circle cx="560" cy="240" r="12" />
+                                <circle cx="560" cy="300" r="12" />
+                            </g>
+                            
+                            <!-- Data flow particles container -->
+                            <g class="particles"></g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-card">
+                <p>Aspiring Machine Learning Engineer with a background in Electronics and Communications Engineering. Skilled in Python, machine learning frameworks, and data analysis, with hands-on experience through projects and AI training programs.</p>
+                <p>Seeking to apply technical expertise in building AI-driven solutions. I'm passionate about developing intelligent systems that drive business value, from data preprocessing to model deployment.</p>
+                <p>I'm constantly exploring cutting-edge technologies and methodologies to stay at the forefront of AI innovation.</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-laptop-code skill-icon"></i>
+                        <h3>Programming</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fab fa-js"></i> JavaScript</li>
+                        <li><i class="fab fa-php"></i> PHP</li>
+                        <li><i class="fas fa-code"></i> C</li>
+                        <li><i class="fas fa-code"></i> C++</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-chart-line skill-icon"></i>
+                        <h3>Data Science</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-table"></i> Pandas</li>
+                        <li><i class="fas fa-th"></i> NumPy</li>
+                        <li><i class="fas fa-chart-bar"></i> Matplotlib</li>
+                        <li><i class="fas fa-filter"></i> Data Preprocessing</li>
+                        <li><i class="fas fa-chart-pie"></i> Visualization</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-brain skill-icon"></i>
+                        <h3>ML & AI</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-cogs"></i> Scikit-learn</li>
+                        <li><i class="fas fa-project-diagram"></i> TensorFlow</li>
+                        <li><i class="fas fa-layer-group"></i> Keras</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-network-wired skill-icon"></i>
+                        <h3>Core Concepts</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-graduation-cap"></i> Supervised Learning</li>
+                        <li><i class="fas fa-random"></i> Unsupervised Learning</li>
+                        <li><i class="fas fa-image"></i> CNNs</li>
+                        <li><i class="fas fa-vector-square"></i> SVM</li>
+                        <li><i class="fas fa-wrench"></i> Feature Engineering</li>
+                        <li><i class="fas fa-check-circle"></i> Model Evaluation</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-database skill-icon"></i>
+                        <h3>Databases</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-database"></i> MySQL</li>
+                    </ul>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-tools skill-icon"></i>
+                        <h3>Tools & IDEs</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-code"></i> VS Code</li>
+                        <li><i class="fas fa-edit"></i> Sublime Text</li>
+                        <li><i class="fab fa-google"></i> Google Colab</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder fraud-detection">
+                            <svg viewBox="0 0 200 120" class="project-svg">
+                                <rect x="30" y="80" width="140" height="25" fill="#8b3a3a" rx="3"/>
+                                <line x1="40" y1="90" x2="160" y2="30" stroke="#c9544d" stroke-width="3"/>
+                                <circle cx="160" cy="30" r="5" fill="#ff6b6b"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Fraud Detection System</h3>
+                    <p class="project-description">Advanced fraud detection system using anomaly detection algorithms to identify suspicious transactions in real-time. Implements machine learning models with high precision and recall rates.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">ML</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder medical-image">
+                            <svg viewBox="0 0 200 120" class="project-svg">
+                                <ellipse cx="100" cy="60" rx="45" ry="50" fill="#4a4a4a" opacity="0.7"/>
+                                <ellipse cx="100" cy="60" rx="30" ry="35" fill="#6a6a6a"/>
+                                <circle cx="100" cy="45" r="6" fill="#fff"/>
+                                <circle cx="100" cy="70" r="4" fill="#fff"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Medical Image Analysis</h3>
+                    <p class="project-description">Deep learning system for medical image analysis with MRI scan processing capabilities. Includes recommendation engine for diagnostic assistance and automated report generation.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">AWS</span>
+                        <span class="tag">CNN</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder recommendation">
+                            <svg viewBox="0 0 200 120" class="project-svg">
+                                <rect x="35" y="25" width="30" height="30" fill="#4a7fb5" rx="4"/>
+                                <rect x="75" y="25" width="30" height="30" fill="#4a7fb5" rx="4"/>
+                                <rect x="115" y="25" width="30" height="30" fill="#4a7fb5" rx="4"/>
+                                <rect x="55" y="65" width="30" height="30" fill="#4a7fb5" rx="4"/>
+                                <rect x="95" y="65" width="30" height="30" fill="#4a7fb5" rx="4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Recommendation Engine</h3>
+                    <p class="project-description">Intelligent product recommendation engine for e-commerce platforms. Uses collaborative filtering and deep learning to provide personalized product suggestions, improving user engagement and sales conversion.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses Section -->
+        <section id="courses" class="section">
+            <h2 class="section-title">Courses & Certifications</h2>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <i class="fas fa-brain course-icon"></i>
+                        <span class="course-year">2025</span>
+                    </div>
+                    <h3 class="course-title">AI Track</h3>
+                    <p class="course-org">Huawei & NTI Egyptian Talents Academy</p>
+                    <p class="course-description">Focused on Artificial Intelligence concepts, Python-based ML models, and data analysis.</p>
+                    <div class="course-tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Data Analysis</span>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <i class="fas fa-microchip course-icon"></i>
+                        <span class="course-year">2016</span>
+                    </div>
+                    <h3 class="course-title">Embedded Systems Diploma</h3>
+                    <p class="course-org">AMIT</p>
+                    <p class="course-description">Covered microcontrollers, C programming, microcontroller architecture, and real-time systems.</p>
+                    <div class="course-tags">
+                        <span class="tag">Embedded Systems</span>
+                        <span class="tag">C Programming</span>
+                        <span class="tag">Microcontrollers</span>
+                        <span class="tag">Real-time Systems</span>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-header">
+                        <i class="fas fa-car course-icon"></i>
+                        <span class="course-year">2018</span>
+                    </div>
+                    <h3 class="course-title">Automotive Embedded Systems Course</h3>
+                    <p class="course-org">Professional Development</p>
+                    <p class="course-description">Introduction to AUTOSAR, CAN protocols, and automotive safety standards.</p>
+                    <div class="course-tags">
+                        <span class="tag">AUTOSAR</span>
+                        <span class="tag">CAN Protocol</span>
+                        <span class="tag">Automotive</span>
+                        <span class="tag">Safety Standards</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>mr.islamamir@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Madinaty, Cairo, Egypt</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+20 100 708 3866</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/islamamir10" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

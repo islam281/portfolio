@@ -8,43 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="profile">
-            <div class="profile-image">
-                <img src="assets/profile.jpg" alt="Islam Amir Mohamed Ali">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    <h1 class="logo-name">Islam Amir</h1>
+                    <p class="logo-title">ML Engineer</p>
+                </div>
             </div>
-            <h1 class="profile-name">Islam Amir<br>Mohamed Ali</h1>
-            <p class="profile-title">Machine Learning Engineer</p>
+            
+            <nav class="nav">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#courses" class="nav-link" data-section="courses">Courses</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </nav>
+            
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        
-        <nav class="nav">
-            <a href="#home" class="nav-link active" data-section="home">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-            <a href="#about" class="nav-link" data-section="about">
-                <i class="fas fa-user"></i>
-                <span>About</span>
-            </a>
-            <a href="#skills" class="nav-link" data-section="skills">
-                <i class="fas fa-code"></i>
-                <span>Skills</span>
-            </a>
-            <a href="#projects" class="nav-link" data-section="projects">
-                <i class="fas fa-folder"></i>
-                <span>Projects</span>
-            </a>
-            <a href="#courses" class="nav-link" data-section="courses">
-                <i class="fas fa-certificate"></i>
-                <span>Courses</span>
-            </a>
-            <a href="#contact" class="nav-link" data-section="contact">
-                <i class="fas fa-envelope"></i>
-                <span>Contact</span>
-            </a>
-        </nav>
-    </aside>
+    </header>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -174,10 +161,15 @@
         <!-- About Section -->
         <section id="about" class="section">
             <h2 class="section-title">About Me</h2>
-            <div class="about-card">
-                <p>Aspiring Machine Learning Engineer with a background in Electronics and Communications Engineering. Skilled in Python, machine learning frameworks, and data analysis, with hands-on experience through projects and AI training programs.</p>
-                <p>Seeking to apply technical expertise in building AI-driven solutions. I'm passionate about developing intelligent systems that drive business value, from data preprocessing to model deployment.</p>
-                <p>I'm constantly exploring cutting-edge technologies and methodologies to stay at the forefront of AI innovation.</p>
+            <div class="about-container">
+                <div class="about-card">
+                    <p>Aspiring Machine Learning Engineer with a background in Electronics and Communications Engineering. Skilled in Python, machine learning frameworks, and data analysis, with hands-on experience through projects and AI training programs.</p>
+                    <p>Seeking to apply technical expertise in building AI-driven solutions. I'm passionate about developing intelligent systems that drive business value, from data preprocessing to model deployment.</p>
+                    <p>I'm constantly exploring cutting-edge technologies and methodologies to stay at the forefront of AI innovation.</p>
+                </div>
+                <div class="about-image-frame">
+                    <img src="assets/profile.jpg" alt="Islam Amir Mohamed Ali">
+                </div>
             </div>
         </section>
 
@@ -268,22 +260,19 @@
         <section id="projects" class="section">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
+                <!-- Project 1: Fraud Detection -->
                 <div class="project-card">
                     <div class="project-thumbnail">
                         <div class="thumbnail-placeholder fraud-detection">
-                            <svg viewBox="0 0 200 120" class="project-svg">
-                                <rect x="30" y="80" width="140" height="25" fill="#8b3a3a" rx="3"/>
-                                <line x1="40" y1="90" x2="160" y2="30" stroke="#c9544d" stroke-width="3"/>
-                                <circle cx="160" cy="30" r="5" fill="#ff6b6b"/>
-                            </svg>
+                            <i class="fas fa-shield-alt project-icon"></i>
                         </div>
                     </div>
                     <h3 class="project-title">Fraud Detection System</h3>
-                    <p class="project-description">Advanced fraud detection system using anomaly detection algorithms to identify suspicious transactions in real-time. Implements machine learning models with high precision and recall rates.</p>
+                    <p class="project-description">Real-time fraud detection using anomaly detection algorithms and ensemble methods to identify suspicious transactions with high precision.</p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">ML</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">XGBoost</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
@@ -291,22 +280,18 @@
                     </div>
                 </div>
                 
+                <!-- Project 2: Image Classification -->
                 <div class="project-card">
                     <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder medical-image">
-                            <svg viewBox="0 0 200 120" class="project-svg">
-                                <ellipse cx="100" cy="60" rx="45" ry="50" fill="#4a4a4a" opacity="0.7"/>
-                                <ellipse cx="100" cy="60" rx="30" ry="35" fill="#6a6a6a"/>
-                                <circle cx="100" cy="45" r="6" fill="#fff"/>
-                                <circle cx="100" cy="70" r="4" fill="#fff"/>
-                            </svg>
+                        <div class="thumbnail-placeholder image-class">
+                            <i class="fas fa-images project-icon"></i>
                         </div>
                     </div>
-                    <h3 class="project-title">Medical Image Analysis</h3>
-                    <p class="project-description">Deep learning system for medical image analysis with MRI scan processing capabilities. Includes recommendation engine for diagnostic assistance and automated report generation.</p>
+                    <h3 class="project-title">Image Classification CNN</h3>
+                    <p class="project-description">Deep learning image classifier using Convolutional Neural Networks trained on custom datasets with data augmentation techniques.</p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
-                        <span class="tag">AWS</span>
+                        <span class="tag">TensorFlow</span>
                         <span class="tag">CNN</span>
                     </div>
                     <div class="project-links">
@@ -315,24 +300,159 @@
                     </div>
                 </div>
                 
+                <!-- Project 3: Sentiment Analysis -->
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder sentiment">
+                            <i class="fas fa-comments project-icon"></i>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Sentiment Analysis NLP</h3>
+                    <p class="project-description">Natural Language Processing model for sentiment analysis on social media data using LSTM and transformer-based architectures.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">NLTK</span>
+                        <span class="tag">Keras</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 4: Stock Price Prediction -->
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder stock">
+                            <i class="fas fa-chart-line project-icon"></i>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Stock Price Prediction</h3>
+                    <p class="project-description">Time series forecasting model using LSTM networks to predict stock prices based on historical data and technical indicators.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">LSTM</span>
+                        <span class="tag">Pandas</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 5: Customer Churn -->
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder churn">
+                            <i class="fas fa-user-minus project-icon"></i>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Customer Churn Prediction</h3>
+                    <p class="project-description">Predictive model to identify customers likely to churn using classification algorithms and feature engineering techniques.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Random Forest</span>
+                        <span class="tag">EDA</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 6: Recommendation Engine -->
                 <div class="project-card">
                     <div class="project-thumbnail">
                         <div class="thumbnail-placeholder recommendation">
-                            <svg viewBox="0 0 200 120" class="project-svg">
-                                <rect x="35" y="25" width="30" height="30" fill="#4a7fb5" rx="4"/>
-                                <rect x="75" y="25" width="30" height="30" fill="#4a7fb5" rx="4"/>
-                                <rect x="115" y="25" width="30" height="30" fill="#4a7fb5" rx="4"/>
-                                <rect x="55" y="65" width="30" height="30" fill="#4a7fb5" rx="4"/>
-                                <rect x="95" y="65" width="30" height="30" fill="#4a7fb5" rx="4"/>
-                            </svg>
+                            <i class="fas fa-thumbs-up project-icon"></i>
                         </div>
                     </div>
                     <h3 class="project-title">Recommendation Engine</h3>
-                    <p class="project-description">Intelligent product recommendation engine for e-commerce platforms. Uses collaborative filtering and deep learning to provide personalized product suggestions, improving user engagement and sales conversion.</p>
+                    <p class="project-description">Movie recommendation system using collaborative filtering and content-based approaches with matrix factorization.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Surprise</span>
+                        <span class="tag">API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 7: Object Detection -->
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder object-detect">
+                            <i class="fas fa-search project-icon"></i>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Object Detection YOLO</h3>
+                    <p class="project-description">Real-time object detection system using YOLOv5 for identifying and localizing multiple objects in images and video streams.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">YOLOv5</span>
+                        <span class="tag">OpenCV</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 8: House Price Prediction -->
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder house">
+                            <i class="fas fa-home project-icon"></i>
+                        </div>
+                    </div>
+                    <h3 class="project-title">House Price Prediction</h3>
+                    <p class="project-description">Regression model to predict house prices using multiple features with extensive feature engineering and model optimization.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">XGBoost</span>
+                        <span class="tag">Feature Eng.</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 9: Spam Detection -->
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder spam">
+                            <i class="fas fa-envelope-open-text project-icon"></i>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Spam Email Classifier</h3>
+                    <p class="project-description">Email spam detection using NLP techniques and machine learning classifiers with TF-IDF vectorization.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Naive Bayes</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
+                        <a href="#" class="btn-demo"><i class="fas fa-external-link-alt"></i> Demo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 10: Handwritten Digit Recognition -->
+                <div class="project-card">
+                    <div class="project-thumbnail">
+                        <div class="thumbnail-placeholder digits">
+                            <i class="fas fa-pencil-alt project-icon"></i>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Digit Recognition</h3>
+                    <p class="project-description">Handwritten digit recognition using CNN trained on MNIST dataset with real-time drawing canvas for predictions.</p>
                     <div class="project-tags">
                         <span class="tag">Python</span>
                         <span class="tag">TensorFlow</span>
-                        <span class="tag">API</span>
+                        <span class="tag">Flask</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code"><i class="fab fa-github"></i> Code</a>
@@ -346,6 +466,22 @@
         <section id="courses" class="section">
             <h2 class="section-title">Courses & Certifications</h2>
             <div class="courses-grid">
+                <div class="course-card">
+                    <div class="course-header">
+                        <i class="fas fa-chart-bar course-icon"></i>
+                        <span class="course-year">2026</span>
+                    </div>
+                    <h3 class="course-title">Data Analysis for Machine Learning</h3>
+                    <p class="course-org">ILANCE</p>
+                    <p class="course-description">Comprehensive data analysis techniques for machine learning applications, covering data preprocessing, visualization, and feature engineering.</p>
+                    <div class="course-tags">
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Feature Engineering</span>
+                    </div>
+                </div>
+                
                 <div class="course-card">
                     <div class="course-header">
                         <i class="fas fa-brain course-icon"></i>

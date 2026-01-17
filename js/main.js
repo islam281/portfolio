@@ -68,39 +68,38 @@ function initNavigation() {
 
 // ===== Mobile Menu =====
 function initMobileMenu() {
-    // Create menu toggle button
-    const menuToggle = document.createElement('button');
-    menuToggle.className = 'menu-toggle';
-    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    document.body.appendChild(menuToggle);
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav');
     
     // Create overlay
     const overlay = document.createElement('div');
     overlay.className = 'overlay';
     document.body.appendChild(overlay);
     
-    const sidebar = document.querySelector('.sidebar');
-    
-    menuToggle.addEventListener('click', () => {
-        sidebar.classList.toggle('active');
-        overlay.classList.toggle('active');
-        menuToggle.innerHTML = sidebar.classList.contains('active') 
-            ? '<i class="fas fa-times"></i>' 
-            : '<i class="fas fa-bars"></i>';
-    });
+    if (menuToggle && nav) {
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            overlay.classList.toggle('active');
+            menuToggle.innerHTML = nav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+    }
     
     overlay.addEventListener('click', closeMobileMenu);
 }
 
 function closeMobileMenu() {
-    const sidebar = document.querySelector('.sidebar');
+    const nav = document.querySelector('.nav');
     const overlay = document.querySelector('.overlay');
     const menuToggle = document.querySelector('.menu-toggle');
     
-    if (sidebar && sidebar.classList.contains('active')) {
-        sidebar.classList.remove('active');
+    if (nav && nav.classList.contains('active')) {
+        nav.classList.remove('active');
         overlay.classList.remove('active');
-        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        if (menuToggle) {
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     }
 }
 

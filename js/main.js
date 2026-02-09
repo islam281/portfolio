@@ -360,7 +360,7 @@ function initTypingEffect() {
     const heroSubtitle = document.querySelector('.hero-subtitle');
     if (!heroSubtitle) return;
     
-    const text = "Professional portfolio showcasing my work and expertise.";
+    const text = "Machine Learning engineer building practical models for fraud, churn, pricing, NLP, and computer vision problems.";
     heroSubtitle.innerHTML = '';
     
     let i = 0;

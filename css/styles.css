@@ -913,11 +913,35 @@ body {
 }
 
 .project-description {
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.project-summary {
     color: var(--text-secondary);
     font-size: 0.95rem;
-    margin-bottom: 1rem;
-    line-height: 1.7;
-    flex-grow: 1;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.project-details {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.4rem;
+}
+
+.project-details li {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.detail-label {
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-right: 0.4rem;
 }
 
 .project-tags {
@@ -990,6 +1014,18 @@ body {
 .btn-demo:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 20px var(--glow-cyan);
+}
+
+.btn-disabled {
+    opacity: 0.55;
+    pointer-events: none;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 /* ===== Courses Section ===== */
@@ -1070,6 +1106,14 @@ body {
     margin-top: 2rem;
 }
 
+.contact-intro {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    max-width: 720px;
+}
+
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -1113,6 +1157,15 @@ body {
     font-size: 0.9rem;
 }
 
+.contact-item a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    color: var(--accent-cyan);
+}
+
 .social-links {
     display: flex;
     gap: 1rem;
@@ -1137,6 +1190,11 @@ body {
     border-color: var(--accent-cyan);
     color: var(--accent-cyan);
     transform: translateY(-3px);
+}
+
+.social-link.disabled {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 /* Contact Form */

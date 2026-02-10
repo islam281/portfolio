@@ -103,218 +103,127 @@ function closeMobileMenu() {
     }
 }
 
-// ===== Neural Network Animation - Brain Network =====
+// ===== Custom Animated Neural Network =====
 function initNeuralNetwork() {
-    const svg = document.querySelector('.network-svg');
-    if (!svg) return;
+    const container = document.getElementById('nn-container');
+    if (!container) return;
     
-    const connectionsGroup = svg.querySelector('.connections');
-    const particlesGroup = svg.querySelector('.particles');
-    const weightLabelsGroup = svg.querySelector('.weight-labels');
+    // Configuration
+    const layers = [6, 4, 2, 4, 6]; // Autoencoder: Input -> Enc -> Bottleneck -> Dec -> Output
+    const width = 800; // Wider to match reference shape
+    const height = 400;
+    const padding = { top: 40, bottom: 40, left: 40, right: 40 }; // Reduced padding (no labels)
     
-    // Get all circle positions grouped by layer (7 layers for brain network)
-    const layers = [];
-    for (let i = 1; i <= 7; i++) {
-        const layer = svg.querySelectorAll(`.layer-${i} circle`);
-        if (layer.length > 0) layers.push(layer);
-    }
+    // Create SVG
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+    svg.classList.add("nn-svg");
+    container.innerHTML = '';
+    container.appendChild(svg);
     
-    if (layers.length === 0) return;
+    // Groups for layering
+    const linksGroup = document.createElementNS(svgNS, "g");
+    const packetsGroup = document.createElementNS(svgNS, "g");
+    const nodesGroup = document.createElementNS(svgNS, "g");
     
-    const allConnections = [];
-    const allWeightLabels = [];
+    svg.appendChild(linksGroup);
+    svg.appendChild(packetsGroup);
+    svg.appendChild(nodesGroup);
     
-    // Draw connections between consecutive layers with varying opacity
-    for (let i = 0; i < layers.length - 1; i++) {
-        const currentLayer = layers[i];
-        const nextLayer = layers[i + 1];
+    // Calculate positions
+    const layerNodes = [];
+    const xStep = (width - padding.left - padding.right) / (layers.length - 1);
+    
+    layers.forEach((nodeCount, layerIndex) => {
+        const currentLayer = [];
+        const x = padding.left + layerIndex * xStep;
         
-        currentLayer.forEach((circle1, idx1) => {
-            const cx1 = parseFloat(circle1.getAttribute('cx'));
-            const cy1 = parseFloat(circle1.getAttribute('cy'));
+        // Calculate vertical spacing
+        // Compress the Bottleneck layer (index 2) to match reference image shape
+        let effectiveHeight = height - padding.top - padding.bottom;
+        if (layerIndex === 2) {
+            effectiveHeight = effectiveHeight * 0.35; // Use only 35% of available height for bottleneck
+        }
+        
+        const yStep = effectiveHeight / (nodeCount - 1 || 1);
+        const yStart = padding.top + (height - padding.top - padding.bottom - (nodeCount - 1) * yStep) / 2; // Always center vertically
+        
+        for (let i = 0; i < nodeCount; i++) {
+            const y = nodeCount === 1 ? height / 2 : yStart + i * yStep;
             
-            nextLayer.forEach((circle2, idx2) => {
-                const cx2 = parseFloat(circle2.getAttribute('cx'));
-                const cy2 = parseFloat(circle2.getAttribute('cy'));
-                
-                // Create connection line
-                const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                line.setAttribute('x1', cx1);
-                line.setAttribute('y1', cy1);
-                line.setAttribute('x2', cx2);
-                line.setAttribute('y2', cy2);
-                line.classList.add('connection');
-                
-                // More visible base opacity
-                line.style.opacity = 0.35 + Math.random() * 0.2;
-                
-                connectionsGroup.appendChild(line);
-                
-                // Create weight label for some connections
-                const midX = (cx1 + cx2) / 2;
-                const midY = (cy1 + cy2) / 2;
-                const weight = (Math.random() * 2 - 1).toFixed(4);
-                
-                const weightLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                weightLabel.setAttribute('x', midX);
-                weightLabel.setAttribute('y', midY);
-                weightLabel.classList.add('weight-label');
-                weightLabel.textContent = weight;
-                weightLabelsGroup.appendChild(weightLabel);
-                
-                allConnections.push({ 
-                    line, 
-                    x1: cx1, 
-                    y1: cy1, 
-                    x2: cx2, 
-                    y2: cy2,
-                    layerIndex: i,
-                    weightLabel
-                });
-                allWeightLabels.push(weightLabel);
+            // Draw Node
+            const circle = document.createElementNS(svgNS, "circle");
+            circle.setAttribute("cx", x);
+            circle.setAttribute("cy", y);
+            circle.setAttribute("r", "18");
+            circle.classList.add("nn-node");
+            
+            // Assign class based on Autoencoder Logic (Ref Image)
+            // Layers 0,1 = Encoder (Teal/Green)
+            // Layer 2 = Bottleneck (Red)
+            // Layers 3,4 = Decoder (Cyan)
+            if (layerIndex <= 1) circle.classList.add("encoder-node"); // Green
+            else if (layerIndex === 2) circle.classList.add("bottleneck-node"); // Red
+            else circle.classList.add("decoder-node"); // Cyan
+            
+            // Add to layer group
+            const layerGroupClass = `layer-${layerIndex}`;
+            if (!svg.querySelector(`.${layerGroupClass}`)) {
+                const group = document.createElementNS(svgNS, "g");
+                group.classList.add(layerGroupClass);
+                nodesGroup.appendChild(group);
+            }
+            svg.querySelector(`.${layerGroupClass}`).appendChild(circle);
+            
+            currentLayer.push({ x, y });
+        }
+        layerNodes.push(currentLayer);
+    });
+    
+    // Draw Connections
+    layerNodes.forEach((currentLayer, i) => {
+        if (i >= layerNodes.length - 1) return;
+        const nextLayer = layerNodes[i + 1];
+        
+        currentLayer.forEach((sourceNode) => {
+            nextLayer.forEach((targetNode) => {
+                const line = document.createElementNS(svgNS, "line");
+                line.setAttribute("x1", sourceNode.x);
+                line.setAttribute("y1", sourceNode.y);
+                line.setAttribute("x2", targetNode.x);
+                line.setAttribute("y2", targetNode.y);
+                line.classList.add("nn-link");
+                linksGroup.appendChild(line);
             });
         });
-    }
-    
-    // Animate data flow through network with colored particles
-    function createParticle() {
-        if (allConnections.length === 0) return;
+    });
+
+    // Animate Signals (Simplified for Reference Style)
+    function launchPacket() {
+        const layerIdx = Math.floor(Math.random() * (layerNodes.length - 1));
+        const currentLayer = layerNodes[layerIdx];
+        const nextLayer = layerNodes[layerIdx + 1];
+        const source = currentLayer[Math.floor(Math.random() * currentLayer.length)];
+        const target = nextLayer[Math.floor(Math.random() * nextLayer.length)];
         
-        // Pick a random connection
-        const conn = allConnections[Math.floor(Math.random() * allConnections.length)];
+        const packet = document.createElementNS(svgNS, "circle");
+        packet.setAttribute("r", "2");
+        packet.classList.add("signal-packet");
+        packetsGroup.appendChild(packet);
         
-        const particle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        particle.setAttribute('r', '3');
-        particle.classList.add('particle');
-        
-        // Alternate between cyan and orange colors based on layer
-        const isOrangeLayer = conn.layerIndex >= 2 && conn.layerIndex <= 4;
-        const useOrange = isOrangeLayer && Math.random() > 0.6;
-        particle.setAttribute('fill', useOrange ? '#ff9933' : '#00bfff');
-        
-        particlesGroup.appendChild(particle);
-        
-        // Animate along the connection
-        const duration = 600 + Math.random() * 400;
-        const startTime = performance.now();
-        
-        // Highlight the connection
-        conn.line.classList.add(useOrange ? 'highlight-orange' : 'highlight-blue');
-        
-        // Show weight label briefly
-        conn.weightLabel.classList.add('visible');
-        
-        function animate(currentTime) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Ease in-out cubic
-            const eased = progress < 0.5 
-                ? 4 * progress * progress * progress 
-                : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-            
-            const x = conn.x1 + (conn.x2 - conn.x1) * eased;
-            const y = conn.y1 + (conn.y2 - conn.y1) * eased;
-            
-            particle.setAttribute('cx', x);
-            particle.setAttribute('cy', y);
-            
-            // Pulse effect
-            const scale = 1 + Math.sin(progress * Math.PI) * 0.5;
-            particle.setAttribute('r', 3 * scale);
-            
-            if (progress < 1) {
-                requestAnimationFrame(animate);
-            } else {
-                particle.remove();
-                conn.line.classList.remove('highlight-blue', 'highlight-orange');
-                conn.weightLabel.classList.remove('visible');
-            }
-        }
-        
-        requestAnimationFrame(animate);
-    }
-    
-    // Particles disabled - removed electron gun effect
-    // setInterval(createParticle, 80);
-    
-    // Wave-like connection highlighting
-    function highlightWave() {
-        const numWaves = 2;
-        
-        for (let wave = 0; wave < numWaves; wave++) {
-            setTimeout(() => {
-                // Pick a random starting layer
-                const startLayer = Math.floor(Math.random() * (layers.length - 1));
-                
-                // Get connections from that layer
-                const layerConnections = allConnections.filter(c => c.layerIndex === startLayer);
-                const numToHighlight = 3 + Math.floor(Math.random() * 4);
-                
-                const highlighted = [];
-                for (let i = 0; i < numToHighlight && i < layerConnections.length; i++) {
-                    const idx = Math.floor(Math.random() * layerConnections.length);
-                    const conn = layerConnections[idx];
-                    const isOrange = Math.random() > 0.5;
-                    conn.line.classList.add(isOrange ? 'highlight-orange' : 'highlight-blue');
-                    highlighted.push({ line: conn.line, isOrange });
-                }
-                
-                setTimeout(() => {
-                    highlighted.forEach(h => {
-                        h.line.classList.remove('highlight-blue', 'highlight-orange');
-                    });
-                }, 400 + Math.random() * 200);
-            }, wave * 300);
-        }
-    }
-    
-    setInterval(highlightWave, 1500);
-    
-    // Periodic weight label flash
-    function flashWeightLabels() {
-        const numToShow = 5 + Math.floor(Math.random() * 10);
-        const toShow = [];
-        
-        for (let i = 0; i < numToShow; i++) {
-            const idx = Math.floor(Math.random() * allWeightLabels.length);
-            allWeightLabels[idx].classList.add('visible');
-            toShow.push(allWeightLabels[idx]);
-        }
-        
-        setTimeout(() => {
-            toShow.forEach(label => label.classList.remove('visible'));
-        }, 800);
-    }
-    
-    setInterval(flashWeightLabels, 2500);
-    
-    // Node activation ripple effect
-    function nodeActivation() {
-        layers.forEach((layer, layerIdx) => {
-            setTimeout(() => {
-                const nodeIdx = Math.floor(Math.random() * layer.length);
-                const node = layer[nodeIdx];
-                const originalR = parseFloat(node.getAttribute('r'));
-                
-                // Create ripple
-                const ripple = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                ripple.setAttribute('cx', node.getAttribute('cx'));
-                ripple.setAttribute('cy', node.getAttribute('cy'));
-                ripple.setAttribute('r', originalR);
-                ripple.setAttribute('fill', 'none');
-                ripple.setAttribute('stroke', '#00bfff');
-                ripple.setAttribute('stroke-width', '2');
-                ripple.classList.add('data-pulse');
-                
-                particlesGroup.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 1000);
-            }, layerIdx * 100);
+        const animation = packet.animate([
+            { transform: `translate(${source.x}px, ${source.y}px)`, opacity: 0 },
+            { opacity: 1, offset: 0.1 },
+            { opacity: 1, offset: 0.9 },
+            { transform: `translate(${target.x}px, ${target.y}px)`, opacity: 0 }
+        ], {
+            duration: 1500 + Math.random() * 1000,
+            easing: 'linear'
         });
+        animation.onfinish = () => packet.remove();
     }
-    
-    setInterval(nodeActivation, 3000);
+    setInterval(launchPacket, 100);
 }
 
 // ===== Form Handling =====
@@ -482,8 +391,44 @@ function addAnimationStyles() {
     document.head.appendChild(style);
 }
 
+// ===== Theme Toggle =====
+function initThemeToggle() {
+    const themeToggle = document.getElementById('themeToggle');
+    const toggleIcon = themeToggle.querySelector('i');
+    const toggleText = themeToggle.querySelector('.theme-text');
+    
+    // Check for saved user preference, default to dark
+    const savedTheme = localStorage.getItem('theme');
+    
+    // If saved theme is light, apply it
+    if (savedTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        toggleIcon.classList.remove('fa-moon');
+        toggleIcon.classList.add('fa-sun');
+        toggleText.textContent = 'Light Mode';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+        // Toggle theme attribute
+        if (document.documentElement.getAttribute('data-theme') === 'light') {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            toggleIcon.classList.remove('fa-sun');
+            toggleIcon.classList.add('fa-moon');
+            toggleText.textContent = 'Dark Mode';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            toggleIcon.classList.remove('fa-moon');
+            toggleIcon.classList.add('fa-sun');
+            toggleText.textContent = 'Light Mode';
+        }
+    });
+}
+
 // ===== Initialize Everything =====
 document.addEventListener('DOMContentLoaded', () => {
+    initThemeToggle(); // Initialize theme first to avoid flash
     addAnimationStyles();
     initNavigation();
     initMobileMenu();

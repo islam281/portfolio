@@ -30,6 +30,11 @@
                 <a href="#contact" class="nav-link" data-section="contact">Contact</a>
             </nav>
             
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <i class="fas fa-moon"></i>
+                <span class="theme-text">Dark Mode</span>
+            </button>
+            
             <button class="menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
@@ -51,111 +56,8 @@
                     </div>
                 </div>
                 <div class="home-visual">
-                    <div class="neural-network brain-network">
-                        <svg viewBox="0 0 600 400" class="network-svg" id="brainNetwork">
-                            <defs>
-                                <!-- Glow filters -->
-                                <filter id="glowCyan" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                                <filter id="glowOrange" x="-50%" y="-50%" width="200%" height="200%">
-                                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-                                    <feMerge>
-                                        <feMergeNode in="coloredBlur"/>
-                                        <feMergeNode in="SourceGraphic"/>
-                                    </feMerge>
-                                </filter>
-                                <!-- Radial gradient for background effect -->
-                                <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
-                                    <stop offset="0%" style="stop-color:#1a3a5c;stop-opacity:0.3" />
-                                    <stop offset="100%" style="stop-color:#0d1117;stop-opacity:0" />
-                                </radialGradient>
-                            </defs>
-                            
-                            <!-- Background glow -->
-                            <ellipse cx="300" cy="200" rx="280" ry="180" fill="url(#bgGlow)" class="bg-glow"/>
-                            
-                            <!-- Connections container (drawn first, behind nodes) -->
-                            <g class="connections"></g>
-                            
-                            <!-- Weight labels container -->
-                            <g class="weight-labels"></g>
-                            
-                            <!-- Brain-like neural network - 7 layers arranged in elliptical pattern -->
-                            <!-- Layer 1 - Input (left edge) - 4 nodes -->
-                            <g class="layer layer-1">
-                                <circle cx="40" cy="120" r="12" />
-                                <circle cx="40" cy="180" r="12" />
-                                <circle cx="40" cy="240" r="12" />
-                                <circle cx="40" cy="300" r="12" />
-                            </g>
-                            
-                            <!-- Layer 2 - 6 nodes -->
-                            <g class="layer layer-2">
-                                <circle cx="120" cy="80" r="11" />
-                                <circle cx="120" cy="140" r="11" />
-                                <circle cx="120" cy="200" r="11" />
-                                <circle cx="120" cy="260" r="11" />
-                                <circle cx="120" cy="320" r="11" />
-                            </g>
-                            
-                            <!-- Layer 3 - 7 nodes (expanding) -->
-                            <g class="layer layer-3">
-                                <circle cx="200" cy="50" r="10" />
-                                <circle cx="200" cy="100" r="10" />
-                                <circle cx="200" cy="150" r="10" />
-                                <circle cx="200" cy="200" r="10" />
-                                <circle cx="200" cy="250" r="10" />
-                                <circle cx="200" cy="300" r="10" />
-                                <circle cx="200" cy="350" r="10" />
-                            </g>
-                            
-                            <!-- Layer 4 - Center (widest) - 8 nodes -->
-                            <g class="layer layer-4">
-                                <circle cx="300" cy="40" r="12" />
-                                <circle cx="300" cy="90" r="12" />
-                                <circle cx="300" cy="140" r="12" />
-                                <circle cx="300" cy="190" r="12" />
-                                <circle cx="300" cy="240" r="12" />
-                                <circle cx="300" cy="290" r="12" />
-                                <circle cx="300" cy="340" r="12" />
-                            </g>
-                            
-                            <!-- Layer 5 - 7 nodes (contracting) -->
-                            <g class="layer layer-5">
-                                <circle cx="400" cy="50" r="10" />
-                                <circle cx="400" cy="100" r="10" />
-                                <circle cx="400" cy="150" r="10" />
-                                <circle cx="400" cy="200" r="10" />
-                                <circle cx="400" cy="250" r="10" />
-                                <circle cx="400" cy="300" r="10" />
-                                <circle cx="400" cy="350" r="10" />
-                            </g>
-                            
-                            <!-- Layer 6 - 5 nodes -->
-                            <g class="layer layer-6">
-                                <circle cx="480" cy="80" r="11" />
-                                <circle cx="480" cy="140" r="11" />
-                                <circle cx="480" cy="200" r="11" />
-                                <circle cx="480" cy="260" r="11" />
-                                <circle cx="480" cy="320" r="11" />
-                            </g>
-                            
-                            <!-- Layer 7 - Output (right edge) - 4 nodes -->
-                            <g class="layer layer-7">
-                                <circle cx="560" cy="120" r="12" />
-                                <circle cx="560" cy="180" r="12" />
-                                <circle cx="560" cy="240" r="12" />
-                                <circle cx="560" cy="300" r="12" />
-                            </g>
-                            
-                            <!-- Data flow particles container -->
-                            <g class="particles"></g>
-                        </svg>
+                    <div id="nn-container" class="neural-network">
+                        <!-- SVG will be injected here by main.js -->
                     </div>
                 </div>
             </div>
@@ -317,127 +219,7 @@
         <section id="projects" class="section">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
-                <!-- Project 1: Fraud Detection -->
-                <div class="project-card">
-                    <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder fraud-detection">
-                            <i class="fas fa-shield-alt project-icon"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Fraud Detection System</h3>
-                    <div class="project-description">
-                        <p class="project-summary">Real-time fraud detection to flag suspicious transactions in high-risk financial environments.</p>
-                        <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Identify fraudulent transactions under extreme class imbalance.</li>
-                            <li><span class="detail-label">Dataset:</span> Available on request.</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Available on request.</li>
-                            <li><span class="detail-label">Models:</span> Anomaly detection + ensemble methods.</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
-                        </ul>
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Scikit-learn</span>
-                        <span class="tag">XGBoost</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    </div>
-                </div>
-                
-                <!-- Project 2: Image Classification -->
-                <div class="project-card">
-                    <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder image-class">
-                            <i class="fas fa-images project-icon"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Image Classification CNN</h3>
-                    <div class="project-description">
-                        <p class="project-summary">Image classification pipeline using CNNs for multi-class categorization.</p>
-                        <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Classify images into predefined categories.</li>
-                            <li><span class="detail-label">Dataset:</span> Custom dataset (details not specified).</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Data augmentation.</li>
-                            <li><span class="detail-label">Models:</span> CNN (TensorFlow).</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
-                        </ul>
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">CNN</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    </div>
-                </div>
-                
-                <!-- Project 3: Sentiment Analysis -->
-                <div class="project-card">
-                    <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder sentiment">
-                            <i class="fas fa-comments project-icon"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Sentiment Analysis NLP</h3>
-                    <div class="project-description">
-                        <p class="project-summary">Sentiment analysis on social media text to capture customer opinion signals.</p>
-                        <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Classify sentiment from text data.</li>
-                            <li><span class="detail-label">Dataset:</span> Social media text (details not specified).</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Available on request.</li>
-                            <li><span class="detail-label">Models:</span> LSTM + transformer-based architectures.</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
-                        </ul>
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">NLTK</span>
-                        <span class="tag">Keras</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    </div>
-                </div>
-                
-                <!-- Project 4: Stock Price Prediction -->
-                <div class="project-card">
-                    <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder stock">
-                            <i class="fas fa-chart-line project-icon"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Stock Price Prediction</h3>
-                    <div class="project-description">
-                        <p class="project-summary">Time-series forecasting for stock prices using historical sequences and technical indicators.</p>
-                        <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Predict future prices from historical market data.</li>
-                            <li><span class="detail-label">Dataset:</span> Historical price series (details not specified).</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Technical indicators.</li>
-                            <li><span class="detail-label">Models:</span> LSTM networks.</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
-                        </ul>
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">LSTM</span>
-                        <span class="tag">Pandas</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    </div>
-                </div>
-                
-                <!-- Project 5: Customer Churn -->
+                <!-- Project 1: Customer Churn Prediction -->
                 <div class="project-card">
                     <div class="project-thumbnail">
                         <div class="thumbnail-placeholder churn">
@@ -446,88 +228,88 @@
                     </div>
                     <h3 class="project-title">Customer Churn Prediction</h3>
                     <div class="project-description">
-                        <p class="project-summary">Customer churn prediction to reduce revenue loss and target retention efforts.</p>
+                        <p class="project-summary">Predictive modeling to identify at-risk customers and improve retention strategies.</p>
                         <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Classify customers at risk of churn.</li>
-                            <li><span class="detail-label">Dataset:</span> Available on request.</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Feature engineering + EDA.</li>
-                            <li><span class="detail-label">Models:</span> Random Forest + classification models.</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
+                            <li><span class="detail-label">Problem:</span> Classify telecom customers likely to cancel service to enable proactive retention.</li>
+                            <li><span class="detail-label">Dataset:</span> Telco Customer Churn (Kaggle).</li>
+                            <li><span class="detail-label">Feature Engineering:</span> One-hot encoding, tenure binning, scaling numerical features.</li>
+                            <li><span class="detail-label">Models:</span> Logistic Regression, Random Forest, XGBoost.</li>
+                            <li><span class="detail-label">Metrics:</span> F1-Score, ROC-AUC, Recall.</li>
+                            <li><span class="detail-label">Results:</span> Achieved 0.82 ROC-AUC with 78% Recall on churn class.</li>
                         </ul>
                     </div>
                     <div class="project-tags">
                         <span class="tag">Python</span>
-                        <span class="tag">Random Forest</span>
-                        <span class="tag">EDA</span>
+                        <span class="tag">XGBoost</span>
+                        <span class="tag">Imbalanced Data</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
                         <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
-                
-                <!-- Project 6: Recommendation Engine -->
+
+                <!-- Project 2: Weather Prediction -->
                 <div class="project-card">
                     <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder recommendation">
-                            <i class="fas fa-thumbs-up project-icon"></i>
+                        <div class="thumbnail-placeholder weather">
+                            <i class="fas fa-cloud-sun-rain project-icon"></i>
                         </div>
                     </div>
-                    <h3 class="project-title">Recommendation Engine</h3>
+                    <h3 class="project-title">Weather Forecasting</h3>
                     <div class="project-description">
-                        <p class="project-summary">Movie recommendation system to improve user engagement and content discovery.</p>
+                        <p class="project-summary">Time-series forecasting model to predict daily temperature and rainfall.</p>
                         <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Recommend relevant items based on user behavior.</li>
-                            <li><span class="detail-label">Dataset:</span> Available on request.</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Available on request.</li>
-                            <li><span class="detail-label">Models:</span> Collaborative filtering, content-based, matrix factorization.</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
+                            <li><span class="detail-label">Problem:</span> Forecast next-day weather conditions using historical climate data.</li>
+                            <li><span class="detail-label">Dataset:</span> NOAA Historical Weather Data.</li>
+                            <li><span class="detail-label">Feature Engineering:</span> Lag features, rolling windows, seasonal decomposition.</li>
+                            <li><span class="detail-label">Models:</span> LSTM (Recurrent Neural Network).</li>
+                            <li><span class="detail-label">Metrics:</span> MAE (Mean Absolute Error), RMSE.</li>
+                            <li><span class="detail-label">Results:</span> RMSE of 2.1°C on test set forecasts.</li>
                         </ul>
                     </div>
                     <div class="project-tags">
                         <span class="tag">Python</span>
-                        <span class="tag">Surprise</span>
-                        <span class="tag">API</span>
+                        <span class="tag">TensorFlow/Keras</span>
+                        <span class="tag">Time Series</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
                         <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
-                
-                <!-- Project 7: Object Detection -->
+
+                <!-- Project 3: Breast Cancer Classification -->
                 <div class="project-card">
                     <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder object-detect">
-                            <i class="fas fa-search project-icon"></i>
+                        <div class="thumbnail-placeholder medical">
+                            <i class="fas fa-notes-medical project-icon"></i>
                         </div>
                     </div>
-                    <h3 class="project-title">Object Detection YOLO</h3>
+                    <h3 class="project-title">Breast Cancer Classification</h3>
                     <div class="project-description">
-                        <p class="project-summary">Real-time object detection for identifying and localizing multiple objects.</p>
+                        <p class="project-summary">Diagnostic support tool to classify tumor biopsies as benign or malignant.</p>
                         <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Detect and localize objects in images and video.</li>
-                            <li><span class="detail-label">Dataset:</span> Available on request.</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Available on request.</li>
-                            <li><span class="detail-label">Models:</span> YOLOv5.</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
+                            <li><span class="detail-label">Problem:</span> Accurately classify cell nuclei features to assist medical diagnosis.</li>
+                            <li><span class="detail-label">Dataset:</span> UCI Breast Cancer Wisconsin (Diagnostic).</li>
+                            <li><span class="detail-label">Feature Engineering:</span> Standardization, correlation analysis for feature selection.</li>
+                            <li><span class="detail-label">Models:</span> SVM (Support Vector Machine), k-NN.</li>
+                            <li><span class="detail-label">Metrics:</span> Accuracy, Sensitivity (Recall), Precision.</li>
+                            <li><span class="detail-label">Results:</span> 97% Accuracy with 98% Sensitivity (minimizing false negatives).</li>
                         </ul>
                     </div>
                     <div class="project-tags">
                         <span class="tag">Python</span>
-                        <span class="tag">YOLOv5</span>
-                        <span class="tag">OpenCV</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">SVM</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
                         <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
-                
-                <!-- Project 8: House Price Prediction -->
+
+                <!-- Project 4: House Price Prediction -->
                 <div class="project-card">
                     <div class="project-thumbnail">
                         <div class="thumbnail-placeholder house">
@@ -536,84 +318,54 @@
                     </div>
                     <h3 class="project-title">House Price Prediction</h3>
                     <div class="project-description">
-                        <p class="project-summary">House price prediction using structured property data for accurate pricing.</p>
+                        <p class="project-summary">Regression model to estimate property values based on features and location.</p>
                         <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Predict housing prices from multi-feature data.</li>
-                            <li><span class="detail-label">Dataset:</span> Available on request.</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Extensive feature engineering.</li>
-                            <li><span class="detail-label">Models:</span> XGBoost regression.</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
+                            <li><span class="detail-label">Problem:</span> Predict continuous sale prices from multi-modal housing data.</li>
+                            <li><span class="detail-label">Dataset:</span> Ames Housing Dataset.</li>
+                            <li><span class="detail-label">Feature Engineering:</span> Handling missing values, log-transforming target, label encoding.</li>
+                            <li><span class="detail-label">Models:</span> Gradient Boosting Regressor (GBR), Lasso Regression.</li>
+                            <li><span class="detail-label">Metrics:</span> RMSE (Log Scale), R2 Score.</li>
+                            <li><span class="detail-label">Results:</span> R2 Score of 0.89; Top 15% on leaderboard benchmarks.</li>
                         </ul>
                     </div>
                     <div class="project-tags">
                         <span class="tag">Python</span>
-                        <span class="tag">XGBoost</span>
-                        <span class="tag">Feature Eng.</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">Regression</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
                         <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
-                
-                <!-- Project 9: Spam Detection -->
+
+                <!-- Project 5: Heart Disease Prediction -->
                 <div class="project-card">
                     <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder spam">
-                            <i class="fas fa-envelope-open-text project-icon"></i>
+                        <div class="thumbnail-placeholder heart">
+                            <i class="fas fa-heartbeat project-icon"></i>
                         </div>
                     </div>
-                    <h3 class="project-title">Spam Email Classifier</h3>
+                    <h3 class="project-title">Heart Disease Prediction</h3>
                     <div class="project-description">
-                        <p class="project-summary">Spam email classification to reduce unwanted and risky messages.</p>
+                        <p class="project-summary">Risk assessment model to predict presence of heart disease from clinical metrics.</p>
                         <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Classify spam vs. legitimate emails.</li>
-                            <li><span class="detail-label">Dataset:</span> Available on request.</li>
-                            <li><span class="detail-label">Feature Engineering:</span> TF-IDF vectorization.</li>
-                            <li><span class="detail-label">Models:</span> Naive Bayes.</li>
-                            <li><span class="detail-label">Metrics:</span> R2 Score, F1, ROC AUC.</li>
-                            <li><span class="detail-label">Results:</span> 0.95 to 0.80 range.</li>
+                            <li><span class="detail-label">Problem:</span> Early detection of heart disease risk using patient health indicators.</li>
+                            <li><span class="detail-label">Dataset:</span> Cleveland Heart Disease Dataset (UCI).</li>
+                            <li><span class="detail-label">Feature Engineering:</span> Feature scaling, categorical encoding (CP, Thal).</li>
+                            <li><span class="detail-label">Models:</span> Logistic Regression, Decision Tree.</li>
+                            <li><span class="detail-label">Metrics:</span> Accuracy, Confusion Matrix.</li>
+                            <li><span class="detail-label">Results:</span> 85% Accuracy on test set with balanced precision/recall.</li>
                         </ul>
                     </div>
                     <div class="project-tags">
                         <span class="tag">Python</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Naive Bayes</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">Healthcare AI</span>
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
                         <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                    </div>
-                </div>
-                
-                <!-- Project 10: Handwritten Digit Recognition -->
-                <div class="project-card">
-                    <div class="project-thumbnail">
-                        <div class="thumbnail-placeholder digits">
-                            <i class="fas fa-pencil-alt project-icon"></i>
-                        </div>
-                    </div>
-                    <h3 class="project-title">Digit Recognition</h3>
-                    <div class="project-description">
-                        <p class="project-summary">Handwritten digit recognition with a real-time drawing interface.</p>
-                        <ul class="project-details">
-                            <li><span class="detail-label">Problem:</span> Classify digits 0-9 from handwritten inputs.</li>
-                            <li><span class="detail-label">Dataset:</span> MNIST.</li>
-                            <li><span class="detail-label">Feature Engineering:</span> Available on request.</li>
-                            <li><span class="detail-label">Models:</span> CNN (TensorFlow).</li>
-                            <li><span class="detail-label">Metrics:</span> Available on request.</li>
-                            <li><span class="detail-label">Results:</span> Available on request.</li>
-                        </ul>
-                    </div>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Flask</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo (N/A)</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo (N/A)</a>
                     </div>
                 </div>
             </div>
@@ -793,12 +545,12 @@
                         <i class="fab fa-github"></i>
                         <div>
                             <h4>GitHub</h4>
-                            <p>Not available yet</p>
+                            <p><a href="https://github.com/islam281" target="_blank" rel="noopener">github.com/islam281</a></p>
                         </div>
                     </div>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/islamamir10" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link disabled" aria-disabled="true"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/islam281" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 

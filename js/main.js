@@ -103,128 +103,7 @@ function closeMobileMenu() {
     }
 }
 
-// ===== Custom Animated Neural Network =====
-function initNeuralNetwork() {
-    const container = document.getElementById('nn-container');
-    if (!container) return;
-    
-    // Configuration
-    const layers = [6, 4, 2, 4, 6]; // Autoencoder: Input -> Enc -> Bottleneck -> Dec -> Output
-    const width = 800; // Wider to match reference shape
-    const height = 400;
-    const padding = { top: 40, bottom: 40, left: 40, right: 40 }; // Reduced padding (no labels)
-    
-    // Create SVG
-    const svgNS = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(svgNS, "svg");
-    svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-    svg.classList.add("nn-svg");
-    container.innerHTML = '';
-    container.appendChild(svg);
-    
-    // Groups for layering
-    const linksGroup = document.createElementNS(svgNS, "g");
-    const packetsGroup = document.createElementNS(svgNS, "g");
-    const nodesGroup = document.createElementNS(svgNS, "g");
-    
-    svg.appendChild(linksGroup);
-    svg.appendChild(packetsGroup);
-    svg.appendChild(nodesGroup);
-    
-    // Calculate positions
-    const layerNodes = [];
-    const xStep = (width - padding.left - padding.right) / (layers.length - 1);
-    
-    layers.forEach((nodeCount, layerIndex) => {
-        const currentLayer = [];
-        const x = padding.left + layerIndex * xStep;
-        
-        // Calculate vertical spacing
-        // Compress the Bottleneck layer (index 2) to match reference image shape
-        let effectiveHeight = height - padding.top - padding.bottom;
-        if (layerIndex === 2) {
-            effectiveHeight = effectiveHeight * 0.35; // Use only 35% of available height for bottleneck
-        }
-        
-        const yStep = effectiveHeight / (nodeCount - 1 || 1);
-        const yStart = padding.top + (height - padding.top - padding.bottom - (nodeCount - 1) * yStep) / 2; // Always center vertically
-        
-        for (let i = 0; i < nodeCount; i++) {
-            const y = nodeCount === 1 ? height / 2 : yStart + i * yStep;
-            
-            // Draw Node
-            const circle = document.createElementNS(svgNS, "circle");
-            circle.setAttribute("cx", x);
-            circle.setAttribute("cy", y);
-            circle.setAttribute("r", "18");
-            circle.classList.add("nn-node");
-            
-            // Assign class based on Autoencoder Logic (Ref Image)
-            // Layers 0,1 = Encoder (Teal/Green)
-            // Layer 2 = Bottleneck (Red)
-            // Layers 3,4 = Decoder (Cyan)
-            if (layerIndex <= 1) circle.classList.add("encoder-node"); // Green
-            else if (layerIndex === 2) circle.classList.add("bottleneck-node"); // Red
-            else circle.classList.add("decoder-node"); // Cyan
-            
-            // Add to layer group
-            const layerGroupClass = `layer-${layerIndex}`;
-            if (!svg.querySelector(`.${layerGroupClass}`)) {
-                const group = document.createElementNS(svgNS, "g");
-                group.classList.add(layerGroupClass);
-                nodesGroup.appendChild(group);
-            }
-            svg.querySelector(`.${layerGroupClass}`).appendChild(circle);
-            
-            currentLayer.push({ x, y });
-        }
-        layerNodes.push(currentLayer);
-    });
-    
-    // Draw Connections
-    layerNodes.forEach((currentLayer, i) => {
-        if (i >= layerNodes.length - 1) return;
-        const nextLayer = layerNodes[i + 1];
-        
-        currentLayer.forEach((sourceNode) => {
-            nextLayer.forEach((targetNode) => {
-                const line = document.createElementNS(svgNS, "line");
-                line.setAttribute("x1", sourceNode.x);
-                line.setAttribute("y1", sourceNode.y);
-                line.setAttribute("x2", targetNode.x);
-                line.setAttribute("y2", targetNode.y);
-                line.classList.add("nn-link");
-                linksGroup.appendChild(line);
-            });
-        });
-    });
 
-    // Animate Signals (Simplified for Reference Style)
-    function launchPacket() {
-        const layerIdx = Math.floor(Math.random() * (layerNodes.length - 1));
-        const currentLayer = layerNodes[layerIdx];
-        const nextLayer = layerNodes[layerIdx + 1];
-        const source = currentLayer[Math.floor(Math.random() * currentLayer.length)];
-        const target = nextLayer[Math.floor(Math.random() * nextLayer.length)];
-        
-        const packet = document.createElementNS(svgNS, "circle");
-        packet.setAttribute("r", "2");
-        packet.classList.add("signal-packet");
-        packetsGroup.appendChild(packet);
-        
-        const animation = packet.animate([
-            { transform: `translate(${source.x}px, ${source.y}px)`, opacity: 0 },
-            { opacity: 1, offset: 0.1 },
-            { opacity: 1, offset: 0.9 },
-            { transform: `translate(${target.x}px, ${target.y}px)`, opacity: 0 }
-        ], {
-            duration: 1500 + Math.random() * 1000,
-            easing: 'linear'
-        });
-        animation.onfinish = () => packet.remove();
-    }
-    setInterval(launchPacket, 100);
-}
 
 // ===== Form Handling =====
 function initContactForm() {
@@ -432,7 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addAnimationStyles();
     initNavigation();
     initMobileMenu();
-    initNeuralNetwork();
+    // initNeuralNetwork removed - using static image
     initContactForm();
     initSmoothScroll();
     initScrollAnimations();

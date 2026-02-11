@@ -21,11 +21,11 @@
 
 /* Light Mode Overrides */
 [data-theme="light"] {
-    /* Backgrounds - "Research Lab" feel */
-    --bg-primary: #f8fafc;  /* Ice White - Main background */
-    --bg-secondary: #f1f5f9; /* Mist Gray - Secondary sections */
-    --bg-card: #ffffff;      /* Pure White - Cards pop against bg */
-    --bg-card-hover: #f0f9ff; /* Very subtle blue tint on hover */
+    /* Backgrounds - "Research Lab" feel - Grayer/Softer */
+    --bg-primary: #e2e8f0;  /* Slate 200 - Much grayer main background */
+    --bg-secondary: #cbd5e1; /* Slate 300 - Distinctly gray secondary */
+    --bg-card: #ffffff;      /* Pure White - Cards pop strongly against gray */
+    --bg-card-hover: #f1f5f9; /* Slate 100 - Subtle hover */
     
     /* Typography - High contrast, legible */
     --text-primary: #1e293b;  /* Slate Charcoal - Softer than black */
@@ -370,104 +370,32 @@ body {
     align-items: center;
 }
 
-/* Neural Network - AI Brain Image */
-.neural-network {
-    width: 100%;
-    max-width: 800px; /* Increased to match new aspect ratio */
-    height: auto;
-    aspect-ratio: 2/1; /* Maintain shape */
-    position: relative;
+/* Robot Image */
+.home-visual {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-/* SVG Styles for Generated NN */
-.nn-svg {
+.robot-img {
     width: 100%;
-    height: 100%;
-    overflow: visible;
-}
-
-.nn-link {
-    stroke: var(--accent-cyan);
-    stroke-width: 1;
-    opacity: 0.3;
+    max-width: 450px;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(0, 191, 255, 0.2));
+    animation: scanningRobot 5s ease-in-out infinite;
+    transform-origin: bottom center; /* Pivot from feet for stability */
     transition: var(--transition);
 }
 
-.nn-node {
-    stroke: var(--bg-card);
-    stroke-width: 2px;
-    transition: var(--transition);
+@keyframes scanningRobot {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); } /* Lean Right */
+    75% { transform: rotate(-3deg); } /* Lean Left */
 }
 
-.nn-node.encoder-node { fill: #00e676; } /* Green */
-.nn-node.bottleneck-node { fill: #ff5252; } /* Red */
-.nn-node.decoder-node { fill: #00e5ff; } /* Cyan */
-
-.nn-annotation-text {
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    fill: var(--text-primary);
-}
-
-.nn-annotation-line {
-    stroke: var(--text-secondary);
-    stroke-width: 1;
-    fill: none;
-}
-
-/* Animations */
-.nn-node {
-    animation: nodePulse 3s ease-in-out infinite;
-}
-
-/* Stagger animations by layer */
-.layer-0 .nn-node { animation-delay: 0s; }
-.layer-1 .nn-node { animation-delay: 0.5s; }
-.layer-2 .nn-node { animation-delay: 1.0s; }
-.layer-3 .nn-node { animation-delay: 1.5s; }
-.layer-4 .nn-node { animation-delay: 2.0s; }
-
-@keyframes nodePulse {
-    0%, 100% { r: 18; filter: brightness(1); }
-    50% { r: 20; filter: brightness(1.3); drop-shadow(0 0 5px currentColor); }
-}
-
-/* Data Flow Animation (Signal) */
-.signal-packet {
-    fill: #ffffff;
-    filter: drop-shadow(0 0 4px #ffffff);
-    opacity: 0;
-    animation: flowSignal 2s linear infinite;
-}
-
-@keyframes flowSignal {
-    0% { offset-distance: 0%; opacity: 0; }
-    10% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { offset-distance: 100%; opacity: 0; }
-}
-
-/* Light Mode Overrides */
-[data-theme="light"] .nn-link {
-    stroke: #94a3b8; /* Darker gray-blue */
-    opacity: 0.4;
-}
-
-[data-theme="light"] .nn-node {
-    stroke: #ffffff;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
-
-[data-theme="light"] .nn-node.encoder-node { fill: #10b981; } /* Darker green */
-[data-theme="light"] .nn-node.bottleneck-node { fill: #ef4444; } /* Darker red */
-[data-theme="light"] .nn-node.decoder-node { fill: #06b6d4; } /* Darker cyan */
-
-[data-theme="light"] .nn-annotation-text {
-    fill: var(--text-primary);
+/* Light Mode Adjustment for Robot */
+[data-theme="light"] .robot-img {
+    filter: grayscale(0.4) brightness(1.05) contrast(1.1) drop-shadow(0 15px 30px rgba(0, 0, 0, 0.2));
 }
 
 /* ===== About Section ===== */

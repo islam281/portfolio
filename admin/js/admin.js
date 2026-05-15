@@ -112,8 +112,38 @@ async function setSection(section) {
         setStatus("Loaded", "ok");
     } catch (error) {
         setStatus(error.message || "Could not load data", "error");
+        renderApiSetupHelp(error);
         console.error(error);
     }
+}
+
+function renderApiSetupHelp(error) {
+    const activePanel = panel(state.section);
+    if (!activePanel) return;
+    const message = String(error?.message || "");
+    if (!message.includes("Static hosting cannot run FastAPI") && !message.includes("Cannot reach API")) {
+        return;
+    }
+    activePanel.innerHTML = `
+        <div class="card">
+            <h3>Backend Required</h3>
+            <p class="meta">
+                This admin panel needs the FastAPI backend. GitHub Pages and Netlify static hosting can serve the portfolio files,
+                but they cannot run Python, SQLite, or the admin API.
+            </p>
+            <div class="setup-steps">
+                <p><strong>1.</strong> Deploy the <code>backend</code> folder to Render, Railway, or another Python hosting service.</p>
+                <p><strong>2.</strong> Copy the backend URL, for example <code>https://your-portfolio-api.onrender.com</code>.</p>
+                <p><strong>3.</strong> Put that URL in <code>admin/config.js</code> and <code>portfolio/config.js</code>:</p>
+                <pre>window.PORTFOLIO_API_ORIGIN = "https://your-portfolio-api.onrender.com";</pre>
+                <p><strong>4.</strong> Redeploy the static site.</p>
+            </div>
+            <p class="meta">
+                Until the backend is deployed, the public portfolio can still read the static JSON files,
+                but this admin panel cannot save changes.
+            </p>
+        </div>
+    `;
 }
 
 async function renderSection() {

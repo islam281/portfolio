@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: portfolio-api
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: MAIL_MAILER
+        value: smtp
+      - key: MAIL_HOST
+        sync: false
+      - key: MAIL_PORT
+        value: 587
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: MAIL_FROM_ADDRESS
+        sync: false
+      - key: MAIL_FROM_NAME
+        value: Portfolio Contact
+      - key: MAIL_USE_TLS
+        value: true
+      - key: MAIL_USE_SSL
+        value: false
+      - key: CONTACT_TO_EMAIL
+        sync: false

@@ -236,6 +236,36 @@ textarea {
     font-weight: 400;
 }
 
+.setup-steps {
+    display: grid;
+    gap: 10px;
+    margin: 18px 0;
+}
+
+.setup-steps p {
+    margin: 0;
+    color: #334155;
+    line-height: 1.5;
+}
+
+code,
+pre {
+    border-radius: 8px;
+    background: #e2e8f0;
+    color: #0f172a;
+    font-family: Consolas, Monaco, monospace;
+}
+
+code {
+    padding: 2px 6px;
+}
+
+pre {
+    overflow-x: auto;
+    padding: 12px;
+    margin: 0;
+}
+
 @media (max-width: 900px) {
     body {
         grid-template-columns: 1fr;

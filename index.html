@@ -47,8 +47,8 @@
         <section id="home" class="section active">
             <div class="home-content">
                 <div class="home-text">
-                    <h1 class="hero-title">Data-Driven Solutions,<br>Intelligent Future.</h1>
-                    <p class="hero-subtitle">Machine Learning engineer building practical models for fraud, churn, pricing, NLP, and computer vision problems.</p>
+                    <h1 class="hero-title" id="hero-title">Data-Driven Solutions,<br>Intelligent Future.</h1>
+                    <p class="hero-subtitle" id="hero-subtitle">Machine Learning engineer building practical models for fraud, churn, pricing, NLP, and computer vision problems.</p>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary">Contact Me</a>
                         <a href="#projects" class="btn btn-secondary">View Projects</a>
@@ -64,7 +64,7 @@
         <!-- About Section -->
         <section id="about" class="section">
             <h2 class="section-title">About Me</h2>
-            <div class="about-container">
+            <div class="about-container" id="about-container">
                 <div class="about-card">
                     <p>Machine Learning Engineer with a background in Electronics and Communications Engineering, focused on building practical, business-aligned ML solutions.</p>
                     <p>Experienced with Python, ML frameworks, and data analysis through applied projects and AI training programs, with a focus on clear evaluation and decision-ready insights.</p>
@@ -133,7 +133,7 @@
         <!-- Skills Section -->
         <section id="skills" class="section">
             <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
+            <div class="skills-grid" id="skills-container">
                 <div class="skill-card">
                     <div class="skill-header">
                         <i class="fas fa-laptop-code skill-icon"></i>
@@ -141,6 +141,7 @@
                     </div>
                     <ul class="skill-list">
                         <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fas fa-robot"></i> Python for AI</li>
                         <li><i class="fab fa-js"></i> JavaScript</li>
                         <li><i class="fab fa-php"></i> PHP</li>
                         <li><i class="fas fa-code"></i> C</li>
@@ -169,8 +170,68 @@
                     </div>
                     <ul class="skill-list">
                         <li><i class="fas fa-cogs"></i> Scikit-learn</li>
+                        <li><i class="fas fa-brain"></i> Deep Learning</li>
+                        <li><i class="fas fa-network-wired"></i> Neural Networks</li>
+                        <li><i class="fas fa-sitemap"></i> Deep Neural Networks</li>
                         <li><i class="fas fa-project-diagram"></i> TensorFlow</li>
                         <li><i class="fas fa-layer-group"></i> Keras</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-eye skill-icon"></i>
+                        <h3>Computer Vision</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-eye"></i> Computer Vision</li>
+                        <li><i class="fas fa-project-diagram"></i> Convolutional Neural Networks</li>
+                        <li><i class="fas fa-image"></i> CNN</li>
+                        <li><i class="fas fa-images"></i> Image Classification</li>
+                        <li><i class="fas fa-share-nodes"></i> Transfer Learning</li>
+                        <li><i class="fas fa-crosshairs"></i> Object Detection</li>
+                        <li><i class="fas fa-font"></i> OCR</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-language skill-icon"></i>
+                        <h3>NLP & Text Processing</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-language"></i> Natural Language Processing</li>
+                        <li><i class="fas fa-book-open"></i> NLP Basics</li>
+                        <li><i class="fas fa-align-left"></i> Text Processing</li>
+                        <li><i class="fas fa-download"></i> Text Scraping</li>
+                        <li><i class="fas fa-filter"></i> Text Feature Extraction</li>
+                        <li><i class="fas fa-broom"></i> Text Cleaning</li>
+                        <li><i class="fas fa-ban"></i> Stop Words</li>
+                        <li><i class="fas fa-code-branch"></i> Stemming</li>
+                        <li><i class="fas fa-vector-square"></i> Word Embedding</li>
+                        <li><i class="fas fa-tags"></i> Text Classification</li>
+                        <li><i class="fas fa-face-smile"></i> Sentiment Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-header">
+                        <i class="fas fa-comments skill-icon"></i>
+                        <h3>Advanced NLP Applications</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-wave-square"></i> RNN / LSTM</li>
+                        <li><i class="fas fa-repeat"></i> Recurrent Neural Networks</li>
+                        <li><i class="fas fa-object-group"></i> Clustering</li>
+                        <li><i class="fas fa-layer-group"></i> Text Clustering</li>
+                        <li><i class="fas fa-user-tag"></i> Named Entity Recognition (NER)</li>
+                        <li><i class="fas fa-spell-check"></i> Word Semantics</li>
+                        <li><i class="fas fa-list-ol"></i> N-Grams</li>
+                        <li><i class="fas fa-chart-area"></i> Text Visualization</li>
+                        <li><i class="fas fa-cloud"></i> WordCloud</li>
+                        <li><i class="fas fa-language"></i> Translation</li>
+                        <li><i class="fas fa-pen-nib"></i> Text Generation</li>
+                        <li><i class="fas fa-comments"></i> Chatbot Basics</li>
                     </ul>
                 </div>
                 
@@ -182,10 +243,9 @@
                     <ul class="skill-list">
                         <li><i class="fas fa-graduation-cap"></i> Supervised Learning</li>
                         <li><i class="fas fa-random"></i> Unsupervised Learning</li>
-                        <li><i class="fas fa-image"></i> CNNs</li>
                         <li><i class="fas fa-vector-square"></i> SVM</li>
                         <li><i class="fas fa-wrench"></i> Feature Engineering</li>
-                        <li><i class="fas fa-check-circle"></i> Model Evaluation</li>
+                        <li><i class="fas fa-check-circle"></i> Model Training and Evaluation</li>
                     </ul>
                 </div>
                 
@@ -216,7 +276,7 @@
         <!-- Projects Section -->
         <section id="projects" class="section">
             <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
+            <div class="projects-grid" id="projects-container">
                 <!-- Project 1: Customer Churn Prediction -->
                 <div class="project-card">
                     <div class="project-thumbnail">
@@ -372,7 +432,7 @@
         <!-- Education Section -->
         <section id="education" class="section">
             <h2 class="section-title">Education</h2>
-            <div class="courses-grid">
+            <div class="courses-grid" id="education-container">
                 <div class="course-card">
                     <div class="course-header">
                         <i class="fas fa-graduation-cap course-icon"></i>
@@ -393,7 +453,27 @@
         <!-- Courses Section -->
         <section id="courses" class="section">
             <h2 class="section-title">Courses</h2>
-            <div class="courses-grid">
+            <div class="courses-grid" id="courses-container">
+                <div class="course-card">
+                    <div class="course-header">
+                        <i class="fas fa-brain course-icon"></i>
+                        <span class="course-year">Self-paced</span>
+                    </div>
+                    <h3 class="course-title">Deep Learning, Computer Vision and NLP Course</h3>
+                    <p class="course-org">YouTube Playlist</p>
+                    <p class="course-description">Training-focused course covering deep learning fundamentals, neural networks, CNNs, RNNs, computer vision, image classification, transfer learning, object detection, OCR, NLP basics, text preprocessing, word embeddings, text classification, clustering, sentiment analysis, NER, translation, text generation, and chatbot basics.</p>
+                    <div class="course-tags">
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Transfer Learning</span>
+                        <span class="tag">Object Detection</span>
+                        <span class="tag">OCR</span>
+                        <span class="tag">Text Classification</span>
+                        <span class="tag">Chatbot Basics</span>
+                    </div>
+                </div>
+
                 <div class="course-card">
                     <div class="course-header">
                         <i class="fas fa-chart-bar course-icon"></i>
@@ -463,7 +543,7 @@
         <!-- Work Experience Section -->
         <section id="experience" class="section">
             <h2 class="section-title">Work Experience</h2>
-            <div class="experience-accordion">
+            <div class="experience-accordion" id="experience-container">
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <div class="accordion-icon">
@@ -570,6 +650,7 @@
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="form-status" aria-live="polite"></div>
                 </form>
             </div>
         </section>

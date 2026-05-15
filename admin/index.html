@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Admin</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div>
+            <p class="eyebrow">Dynamic Portfolio</p>
+            <h1>Admin</h1>
+        </div>
+        <nav class="tabs">
+            <button class="tab active" data-section="profile"><i class="fas fa-user"></i> Profile</button>
+            <button class="tab" data-section="skills"><i class="fas fa-brain"></i> Skills</button>
+            <button class="tab" data-section="projects"><i class="fas fa-project-diagram"></i> Projects</button>
+            <button class="tab" data-section="courses"><i class="fas fa-certificate"></i> Courses</button>
+            <button class="tab" data-section="experience"><i class="fas fa-briefcase"></i> Experience</button>
+        </nav>
+        <a class="site-link" href="/" target="_blank">Open Portfolio</a>
+    </aside>
+
+    <main class="content">
+        <header class="topbar">
+            <div>
+                <h2 id="section-title">Profile</h2>
+                <p id="section-help">Edit the main hero, about, and contact information.</p>
+            </div>
+            <div id="status" class="status"></div>
+        </header>
+
+        <section id="profile-panel" class="panel active"></section>
+        <section id="skills-panel" class="panel"></section>
+        <section id="projects-panel" class="panel"></section>
+        <section id="courses-panel" class="panel"></section>
+        <section id="experience-panel" class="panel"></section>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

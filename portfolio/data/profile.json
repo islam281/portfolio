@@ -1,0 +1,20 @@
+{
+    "name": "Islam Amir",
+    "title": "ML Engineer",
+    "hero": {
+        "title": "Data-Driven Solutions,<br>Intelligent Future.",
+        "subtitle": "Machine Learning engineer building practical models for fraud, churn, pricing, NLP, and computer vision problems."
+    },
+    "about": {
+        "text_primary": "Machine Learning Engineer with a background in Electronics and Communications Engineering, focused on building practical, business-aligned ML solutions.",
+        "text_secondary": "Experienced with Python, ML frameworks, and data analysis through applied projects and AI training programs, with a focus on clear evaluation and decision-ready insights.",
+        "image": "assets/profile.jpg"
+    },
+    "socials": {
+        "email": "mr.islamamir@gmail.com",
+        "location": "Madinaty, Cairo, Egypt",
+        "phone": "+20 100 708 3866",
+        "linkedin": "https://www.linkedin.com/in/islamamir10",
+        "github": "https://github.com/islam281"
+    }
+}

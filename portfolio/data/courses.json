@@ -1,0 +1,42 @@
+[
+    {
+        "year": "Self-paced",
+        "title": "Deep Learning, Computer Vision and NLP Course",
+        "org": "YouTube Playlist",
+        "icon": "fas fa-brain",
+        "description": "Training-focused course covering deep learning fundamentals, neural networks, CNNs, RNNs, computer vision, image classification, transfer learning, object detection, OCR, NLP basics, text preprocessing, word embeddings, text classification, clustering, sentiment analysis, NER, translation, text generation, and chatbot basics.",
+        "tags": ["Deep Learning", "Computer Vision", "NLP", "Transfer Learning", "Object Detection", "OCR", "Text Classification", "Chatbot Basics"]
+    },
+    {
+        "year": "2026",
+        "title": "Data Analysis for Machine Learning",
+        "org": "ILANCE",
+        "icon": "fas fa-chart-bar",
+        "description": "Comprehensive data analysis techniques for machine learning applications, covering data preprocessing, visualization, and feature engineering.",
+        "tags": ["Data Analysis", "Machine Learning", "Python", "Feature Engineering"]
+    },
+    {
+        "year": "2025",
+        "title": "AI Track",
+        "org": "Huawei & NTI Egyptian Talents Academy (ETA)",
+        "icon": "fas fa-brain",
+        "description": "Focused on Artificial Intelligence concepts, Python-based ML models, and data analysis.",
+        "tags": ["AI", "Machine Learning", "Python", "Data Analysis"]
+    },
+    {
+        "year": "2018",
+        "title": "Automotive Embedded Systems Course",
+        "org": "Professional Development",
+        "icon": "fas fa-car",
+        "description": "Introduction to AUTOSAR, CAN protocols, and automotive safety standards.",
+        "tags": ["AUTOSAR", "CAN Protocol", "Automotive", "Safety Standards"]
+    },
+    {
+        "year": "2016",
+        "title": "Embedded Systems Diploma",
+        "org": "AMIT",
+        "icon": "fas fa-microchip",
+        "description": "Covered microcontrollers, C programming, microcontroller architecture, and real-time systems.",
+        "tags": ["Embedded Systems", "C Programming", "Microcontrollers", "Real-time Systems"]
+    }
+]

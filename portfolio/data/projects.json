@@ -1,0 +1,92 @@
+[
+    {
+        "id": "churn-prediction",
+        "title": "Customer Churn Prediction",
+        "class": "churn",
+        "icon": "fas fa-user-minus",
+        "summary": "Predictive modeling to identify at-risk customers and improve retention strategies.",
+        "details": {
+            "Problem": "Classify telecom customers likely to cancel service to enable proactive retention.",
+            "Dataset": "Telco Customer Churn (Kaggle).",
+            "Feature Engineering": "One-hot encoding, tenure binning, scaling numerical features.",
+            "Models": "Logistic Regression, Random Forest, XGBoost.",
+            "Metrics": "F1-Score, ROC-AUC, Recall.",
+            "Results": "Achieved 0.82 ROC-AUC with 78% Recall on churn class."
+        },
+        "tags": ["Python", "XGBoost", "Imbalanced Data"],
+        "repo_link": "#",
+        "demo_link": "#"
+    },
+    {
+        "id": "weather-forecasting",
+        "title": "Weather Forecasting",
+        "class": "weather",
+        "icon": "fas fa-cloud-sun-rain",
+        "summary": "Time-series forecasting model to predict daily temperature and rainfall.",
+        "details": {
+            "Problem": "Forecast next-day weather conditions using historical climate data.",
+            "Dataset": "NOAA Historical Weather Data.",
+            "Feature Engineering": "Lag features, rolling windows, seasonal decomposition.",
+            "Models": "LSTM (Recurrent Neural Network).",
+            "Metrics": "MAE (Mean Absolute Error), RMSE.",
+            "Results": "RMSE of 2.1°C on test set forecasts."
+        },
+        "tags": ["Python", "TensorFlow/Keras", "Time Series"],
+        "repo_link": "#",
+        "demo_link": "#"
+    },
+    {
+        "id": "breast-cancer",
+        "title": "Breast Cancer Classification",
+        "class": "medical",
+        "icon": "fas fa-notes-medical",
+        "summary": "Diagnostic support tool to classify tumor biopsies as benign or malignant.",
+        "details": {
+            "Problem": "Accurately classify cell nuclei features to assist medical diagnosis.",
+            "Dataset": "UCI Breast Cancer Wisconsin (Diagnostic).",
+            "Feature Engineering": "Standardization, correlation analysis for feature selection.",
+            "Models": "SVM (Support Vector Machine), k-NN.",
+            "Metrics": "Accuracy, Sensitivity (Recall), Precision.",
+            "Results": "97% Accuracy with 98% Sensitivity (minimizing false negatives)."
+        },
+        "tags": ["Python", "Scikit-learn", "SVM"],
+        "repo_link": "#",
+        "demo_link": "#"
+    },
+    {
+        "id": "house-price",
+        "title": "House Price Prediction",
+        "class": "house",
+        "icon": "fas fa-home",
+        "summary": "Regression model to estimate property values based on features and location.",
+        "details": {
+            "Problem": "Predict continuous sale prices from multi-modal housing data.",
+            "Dataset": "Ames Housing Dataset.",
+            "Feature Engineering": "Handling missing values, log-transforming target, label encoding.",
+            "Models": "Gradient Boosting Regressor (GBR), Lasso Regression.",
+            "Metrics": "RMSE (Log Scale), R2 Score.",
+            "Results": "R2 Score of 0.89; Top 15% on leaderboard benchmarks."
+        },
+        "tags": ["Python", "Pandas", "Regression"],
+        "repo_link": "#",
+        "demo_link": "#"
+    },
+    {
+        "id": "heart-disease",
+        "title": "Heart Disease Prediction",
+        "class": "heart",
+        "icon": "fas fa-heartbeat",
+        "summary": "Risk assessment model to predict presence of heart disease from clinical metrics.",
+        "details": {
+            "Problem": "Early detection of heart disease risk using patient health indicators.",
+            "Dataset": "Cleveland Heart Disease Dataset (UCI).",
+            "Feature Engineering": "Feature scaling, categorical encoding (CP, Thal).",
+            "Models": "Logistic Regression, Decision Tree.",
+            "Metrics": "Accuracy, Confusion Matrix.",
+            "Results": "85% Accuracy on test set with balanced precision/recall."
+        },
+        "tags": ["Python", "Scikit-learn", "Healthcare AI"],
+        "repo_link": "#",
+        "demo_link": "#"
+    }
+]

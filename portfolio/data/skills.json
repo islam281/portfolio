@@ -1,0 +1,112 @@
+[
+    {
+        "title": "Programming",
+        "icon": "fas fa-laptop-code",
+        "skills": [
+            {"name": "Python", "icon": "fab fa-python"},
+            {"name": "Python for AI", "icon": "fas fa-robot"},
+            {"name": "JavaScript", "icon": "fab fa-js"},
+            {"name": "PHP", "icon": "fab fa-php"},
+            {"name": "C", "icon": "fas fa-code"},
+            {"name": "C++", "icon": "fas fa-code"}
+        ]
+    },
+    {
+        "title": "Data Science",
+        "icon": "fas fa-chart-line",
+        "skills": [
+            {"name": "Pandas", "icon": "fas fa-table"},
+            {"name": "NumPy", "icon": "fas fa-th"},
+            {"name": "Matplotlib", "icon": "fas fa-chart-bar"},
+            {"name": "Data Preprocessing", "icon": "fas fa-filter"},
+            {"name": "Visualization", "icon": "fas fa-chart-pie"}
+        ]
+    },
+    {
+        "title": "ML & AI",
+        "icon": "fas fa-brain",
+        "skills": [
+            {"name": "Scikit-learn", "icon": "fas fa-cogs"},
+            {"name": "Deep Learning", "icon": "fas fa-brain"},
+            {"name": "Neural Networks", "icon": "fas fa-network-wired"},
+            {"name": "Deep Neural Networks", "icon": "fas fa-sitemap"},
+            {"name": "TensorFlow", "icon": "fas fa-project-diagram"},
+            {"name": "Keras", "icon": "fas fa-layer-group"}
+        ]
+    },
+    {
+        "title": "Computer Vision",
+        "icon": "fas fa-eye",
+        "skills": [
+            {"name": "Computer Vision", "icon": "fas fa-eye"},
+            {"name": "Convolutional Neural Networks", "icon": "fas fa-project-diagram"},
+            {"name": "CNN", "icon": "fas fa-image"},
+            {"name": "Image Classification", "icon": "fas fa-images"},
+            {"name": "Transfer Learning", "icon": "fas fa-share-nodes"},
+            {"name": "Object Detection", "icon": "fas fa-crosshairs"},
+            {"name": "OCR", "icon": "fas fa-font"}
+        ]
+    },
+    {
+        "title": "NLP & Text Processing",
+        "icon": "fas fa-language",
+        "skills": [
+            {"name": "Natural Language Processing", "icon": "fas fa-language"},
+            {"name": "NLP Basics", "icon": "fas fa-book-open"},
+            {"name": "Text Processing", "icon": "fas fa-align-left"},
+            {"name": "Text Scraping", "icon": "fas fa-download"},
+            {"name": "Text Feature Extraction", "icon": "fas fa-filter"},
+            {"name": "Text Cleaning", "icon": "fas fa-broom"},
+            {"name": "Stop Words", "icon": "fas fa-ban"},
+            {"name": "Stemming", "icon": "fas fa-code-branch"},
+            {"name": "Word Embedding", "icon": "fas fa-vector-square"},
+            {"name": "Text Classification", "icon": "fas fa-tags"},
+            {"name": "Sentiment Analysis", "icon": "fas fa-face-smile"}
+        ]
+    },
+    {
+        "title": "Advanced NLP Applications",
+        "icon": "fas fa-comments",
+        "skills": [
+            {"name": "RNN / LSTM", "icon": "fas fa-wave-square"},
+            {"name": "Recurrent Neural Networks", "icon": "fas fa-repeat"},
+            {"name": "Clustering", "icon": "fas fa-object-group"},
+            {"name": "Text Clustering", "icon": "fas fa-layer-group"},
+            {"name": "Named Entity Recognition (NER)", "icon": "fas fa-user-tag"},
+            {"name": "Word Semantics", "icon": "fas fa-spell-check"},
+            {"name": "N-Grams", "icon": "fas fa-list-ol"},
+            {"name": "Text Visualization", "icon": "fas fa-chart-area"},
+            {"name": "WordCloud", "icon": "fas fa-cloud"},
+            {"name": "Translation", "icon": "fas fa-language"},
+            {"name": "Text Generation", "icon": "fas fa-pen-nib"},
+            {"name": "Chatbot Basics", "icon": "fas fa-comments"}
+        ]
+    },
+    {
+        "title": "Core Concepts",
+        "icon": "fas fa-network-wired",
+        "skills": [
+            {"name": "Supervised Learning", "icon": "fas fa-graduation-cap"},
+            {"name": "Unsupervised Learning", "icon": "fas fa-random"},
+            {"name": "SVM", "icon": "fas fa-vector-square"},
+            {"name": "Feature Engineering", "icon": "fas fa-wrench"},
+            {"name": "Model Training and Evaluation", "icon": "fas fa-check-circle"}
+        ]
+    },
+    {
+        "title": "Databases",
+        "icon": "fas fa-database",
+        "skills": [
+            {"name": "MySQL", "icon": "fas fa-database"}
+        ]
+    },
+    {
+        "title": "Tools & IDEs",
+        "icon": "fas fa-tools",
+        "skills": [
+            {"name": "VS Code", "icon": "fas fa-code"},
+            {"name": "Sublime Text", "icon": "fas fa-edit"},
+            {"name": "Google Colab", "icon": "fab fa-google"}
+        ]
+    }
+]

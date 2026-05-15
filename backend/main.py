@@ -109,7 +109,7 @@ def send_contact_message(payload: ContactMessage):
             "MAIL_FROM_ADDRESS": mail_from,
             "CONTACT_TO_EMAIL": contact_to,
         }.items()
-        if not value or value == "ضع_إيميلك_هنا"
+        if not value or value in {"ضع_إيميلك_هنا", "your_destination_email@example.com"}
     ]
     if missing:
         raise HTTPException(

@@ -1,4 +1,5 @@
-const API_ORIGIN = location.protocol === "file:" || !location.host ? "http://127.0.0.1:8000" : "";
+const configuredApiOrigin = (window.PORTFOLIO_API_ORIGIN || "").replace(/\/$/, "");
+const API_ORIGIN = configuredApiOrigin || (location.protocol === "file:" || !location.host ? "http://127.0.0.1:8000" : "");
 const API = `${API_ORIGIN}/api/admin`;
 
 const state = {
@@ -40,7 +41,27 @@ async function request(path, options = {}) {
         throw new Error(`Cannot reach API at ${API}. Start the FastAPI server first.`);
     }
     if (!response.ok) {
-        throw new Error(await response.text());
+        const text = await response.text();
+        if (text.trim().startsWith("<!DOCTYPE") || text.includes("Page not found")) {
+            throw new Error(
+                "Admin API was not found on this deployment. Static hosting cannot run FastAPI; deploy the backend separately and set window.PORTFOLIO_API_ORIGIN in admin/config.js."
+            );
+        }
+        try {
+            const json = JSON.parse(text);
+            throw new Error(typeof json.detail === "string" ? json.detail : JSON.stringify(json.detail || json));
+        } catch (parseError) {
+            if (parseError.message && !parseError.message.includes("Unexpected token")) {
+                throw parseError;
+            }
+            throw new Error(text || "Could not load data");
+        }
+    }
+    const contentType = response.headers.get("content-type") || "";
+    if (!contentType.includes("application/json")) {
+        throw new Error(
+            "Admin API returned a non-JSON response. Check that admin/config.js points to the deployed FastAPI backend."
+        );
     }
     return response.status === 204 ? null : response.json();
 }

@@ -1,7 +1,8 @@
 // ===== DOM Elements =====
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
-const API_ORIGIN = location.protocol === "file:" || !location.host ? "http://127.0.0.1:8000" : "";
+const configuredApiOrigin = (window.PORTFOLIO_API_ORIGIN || "").replace(/\/$/, "");
+const API_ORIGIN = configuredApiOrigin || (location.protocol === "file:" || !location.host ? "http://127.0.0.1:8000" : "");
 const API_BASE = `${API_ORIGIN}/api/public`;
 const CONTACT_API = `${API_ORIGIN}/api/contact`;
 let dynamicHeroSubtitle = "Machine Learning engineer building practical models for fraud, churn, pricing, NLP, and computer vision problems.";
@@ -400,21 +401,14 @@ function initAccordion() {
 // ===== Data Loading =====
 async function loadPortfolioData() {
     try {
-        const [profileRes, skillsRes, projectsRes, educationRes, coursesRes, experienceRes] = await Promise.all([
-            fetch(`${API_BASE}/profile`),
-            fetch(`${API_BASE}/skills`),
-            fetch(`${API_BASE}/projects`),
-            fetch(`${API_BASE}/education`),
-            fetch(`${API_BASE}/courses`),
-            fetch(`${API_BASE}/experience`)
+        const [profile, skills, projects, education, courses, experience] = await Promise.all([
+            fetchPortfolioData('profile'),
+            fetchPortfolioData('skills'),
+            fetchPortfolioData('projects'),
+            fetchPortfolioData('education'),
+            fetchPortfolioData('courses'),
+            fetchPortfolioData('experience')
         ]);
-
-        const profile = await profileRes.json();
-        const skills = await skillsRes.json();
-        const projects = await projectsRes.json();
-        const education = await educationRes.json();
-        const courses = await coursesRes.json();
-        const experience = await experienceRes.json();
 
         renderProfile(profile);
         initTypingEffect();
@@ -441,6 +435,24 @@ async function loadPortfolioData() {
 
     } catch (error) {
         console.error('Error loading portfolio data:', error);
+    }
+}
+
+async function fetchPortfolioData(name) {
+    const apiUrl = `${API_BASE}/${name}`;
+    try {
+        const response = await fetch(apiUrl);
+        const contentType = response.headers.get('content-type') || '';
+        if (!response.ok || !contentType.includes('application/json')) {
+            throw new Error(`API unavailable for ${name}`);
+        }
+        return await response.json();
+    } catch (error) {
+        const fallback = await fetch(`data/${name}.json`);
+        if (!fallback.ok) {
+            throw error;
+        }
+        return fallback.json();
     }
 }
 

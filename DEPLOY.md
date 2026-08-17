@@ -2,7 +2,7 @@
 
 The public portfolio can be deployed as static files on Netlify or GitHub Pages.
 
-The Admin panel needs the FastAPI backend. Static hosting cannot run:
+The custom Admin panel needs the FastAPI backend. Static hosting cannot run:
 
 - Python / FastAPI
 - SQLite database writes

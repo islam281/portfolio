@@ -1,0 +1,318 @@
+[
+    {
+        "title": "Programming",
+        "icon": "fas fa-laptop-code",
+        "skills": [
+            {
+                "name": "Python",
+                "icon": "fab fa-python"
+            },
+            {
+                "name": "C",
+                "icon": "fas fa-code"
+            },
+            {
+                "name": "C++",
+                "icon": "fas fa-code"
+            },
+            {
+                "name": "JavaScript",
+                "icon": "fab fa-js"
+            },
+            {
+                "name": "PHP",
+                "icon": "fab fa-php"
+            }
+        ]
+    },
+    {
+        "title": "Data Analysis",
+        "icon": "fas fa-chart-line",
+        "skills": [
+            {
+                "name": "Pandas",
+                "icon": "fas fa-table"
+            },
+            {
+                "name": "NumPy",
+                "icon": "fas fa-th"
+            },
+            {
+                "name": "Matplotlib",
+                "icon": "fas fa-chart-bar"
+            },
+            {
+                "name": "EDA",
+                "icon": "fas fa-magnifying-glass-chart"
+            },
+            {
+                "name": "Data Preprocessing",
+                "icon": "fas fa-filter"
+            }
+        ]
+    },
+    {
+        "title": "Machine Learning",
+        "icon": "fas fa-cogs",
+        "skills": [
+            {
+                "name": "Supervised Learning",
+                "icon": "fas fa-graduation-cap"
+            },
+            {
+                "name": "Unsupervised Learning",
+                "icon": "fas fa-random"
+            },
+            {
+                "name": "Scikit-learn",
+                "icon": "fas fa-cogs"
+            },
+            {
+                "name": "XGBoost",
+                "icon": "fas fa-tree"
+            },
+            {
+                "name": "SVM",
+                "icon": "fas fa-vector-square"
+            },
+            {
+                "name": "Random Forest",
+                "icon": "fas fa-tree"
+            },
+            {
+                "name": "KNN",
+                "icon": "fas fa-circle-nodes"
+            },
+            {
+                "name": "Feature Engineering",
+                "icon": "fas fa-wrench"
+            },
+            {
+                "name": "Model Evaluation",
+                "icon": "fas fa-check-circle"
+            }
+        ]
+    },
+    {
+        "title": "Deep Learning",
+        "icon": "fas fa-brain",
+        "skills": [
+            {
+                "name": "TensorFlow",
+                "icon": "fas fa-project-diagram"
+            },
+            {
+                "name": "Keras",
+                "icon": "fas fa-layer-group"
+            },
+            {
+                "name": "ANN",
+                "icon": "fas fa-network-wired"
+            },
+            {
+                "name": "DNN",
+                "icon": "fas fa-sitemap"
+            },
+            {
+                "name": "CNN",
+                "icon": "fas fa-image"
+            },
+            {
+                "name": "RNN",
+                "icon": "fas fa-repeat"
+            },
+            {
+                "name": "LSTM",
+                "icon": "fas fa-wave-square"
+            }
+        ]
+    },
+    {
+        "title": "Computer Vision",
+        "icon": "fas fa-eye",
+        "skills": [
+            {
+                "name": "CNNs",
+                "icon": "fas fa-project-diagram"
+            },
+            {
+                "name": "Transfer Learning",
+                "icon": "fas fa-share-nodes"
+            },
+            {
+                "name": "Data Augmentation",
+                "icon": "fas fa-clone"
+            },
+            {
+                "name": "Image Classification",
+                "icon": "fas fa-images"
+            },
+            {
+                "name": "Object Detection",
+                "icon": "fas fa-crosshairs"
+            },
+            {
+                "name": "OCR",
+                "icon": "fas fa-font"
+            }
+        ]
+    },
+    {
+        "title": "NLP",
+        "icon": "fas fa-language",
+        "skills": [
+            {
+                "name": "Text Preprocessing",
+                "icon": "fas fa-broom"
+            },
+            {
+                "name": "TF-IDF",
+                "icon": "fas fa-filter"
+            },
+            {
+                "name": "Word Embeddings",
+                "icon": "fas fa-vector-square"
+            },
+            {
+                "name": "Text Classification",
+                "icon": "fas fa-tags"
+            },
+            {
+                "name": "Sentiment Analysis",
+                "icon": "fas fa-face-smile"
+            },
+            {
+                "name": "Named Entity Recognition (NER)",
+                "icon": "fas fa-user-tag"
+            },
+            {
+                "name": "N-Grams",
+                "icon": "fas fa-list-ol"
+            },
+            {
+                "name": "Text Clustering",
+                "icon": "fas fa-object-group"
+            }
+        ]
+    },
+    {
+        "title": "LLMs",
+        "icon": "fas fa-comments",
+        "skills": [
+            {
+                "name": "Transformers",
+                "icon": "fas fa-bolt"
+            },
+            {
+                "name": "Hugging Face",
+                "icon": "fas fa-face-smile-beam"
+            },
+            {
+                "name": "Prompt Engineering",
+                "icon": "fas fa-pen-nib"
+            },
+            {
+                "name": "Few-Shot Prompting",
+                "icon": "fas fa-list-check"
+            },
+            {
+                "name": "Structured Outputs",
+                "icon": "fas fa-code"
+            },
+            {
+                "name": "Outlines",
+                "icon": "fas fa-diagram-project"
+            },
+            {
+                "name": "Pydantic",
+                "icon": "fas fa-shield-halved"
+            },
+            {
+                "name": "LangChain",
+                "icon": "fas fa-link"
+            }
+        ]
+    },
+    {
+        "title": "RAG",
+        "icon": "fas fa-magnifying-glass",
+        "skills": [
+            {
+                "name": "Embeddings",
+                "icon": "fas fa-vector-square"
+            },
+            {
+                "name": "ChromaDB",
+                "icon": "fas fa-database"
+            },
+            {
+                "name": "Parent-Child Chunking",
+                "icon": "fas fa-sitemap"
+            },
+            {
+                "name": "Dense Retrieval",
+                "icon": "fas fa-compress"
+            },
+            {
+                "name": "BM25",
+                "icon": "fas fa-font"
+            },
+            {
+                "name": "Hybrid Retrieval",
+                "icon": "fas fa-code-merge"
+            },
+            {
+                "name": "Retrieval Evaluation",
+                "icon": "fas fa-check-double"
+            }
+        ]
+    },
+    {
+        "title": "Agentic AI",
+        "icon": "fas fa-robot",
+        "skills": [
+            {
+                "name": "LangGraph",
+                "icon": "fas fa-diagram-project"
+            },
+            {
+                "name": "Tool Calling",
+                "icon": "fas fa-screwdriver-wrench"
+            },
+            {
+                "name": "Agent Workflows",
+                "icon": "fas fa-arrows-spin"
+            }
+        ]
+    },
+    {
+        "title": "Databases & Tools",
+        "icon": "fas fa-tools",
+        "skills": [
+            {
+                "name": "MySQL",
+                "icon": "fas fa-database"
+            },
+            {
+                "name": "FastAPI",
+                "icon": "fas fa-bolt"
+            },
+            {
+                "name": "Git",
+                "icon": "fab fa-git-alt"
+            },
+            {
+                "name": "GitHub",
+                "icon": "fab fa-github"
+            },
+            {
+                "name": "VS Code",
+                "icon": "fas fa-code"
+            },
+            {
+                "name": "Google Colab",
+                "icon": "fab fa-google"
+            }
+        ]
+    }
+]

@@ -1,0 +1,178 @@
+[
+    {
+        "id": "arabic-rag",
+        "title": "Arabic RAG — Historical Document Retrieval",
+        "class": "sentiment",
+        "icon": "fas fa-book-open",
+        "summary": "Arabic retrieval pipeline that finds the most relevant context in historical documents.",
+        "details": {
+            "Problem": "Retrieve relevant source passages for Arabic questions over historical documents.",
+            "Pipeline": "LangChain, Hugging Face embeddings, ChromaDB, and indexed source metadata.",
+            "Chunking": "Parent-Child chunking to balance precise matching with full document context.",
+            "Retrieval": "Explored Dense, BM25, and weighted Hybrid retrieval.",
+            "Evaluation": "Retrieval experiments with Arabic questions and reference source pages to compare search strategies."
+        },
+        "tags": [
+            "RAG",
+            "LangChain",
+            "ChromaDB",
+            "Hybrid Retrieval",
+            "Arabic NLP"
+        ],
+        "repo_link": "https://github.com/islam281/Arabic-RAG-System-",
+        "demo_link": "#"
+    },
+    {
+        "id": "ticket-classifier",
+        "title": "AI Ticket Classifier — LLM-Based Support Ticket Classification",
+        "class": "spam",
+        "icon": "fas fa-ticket-alt",
+        "summary": "LLM system that classifies support tickets and writes concise ticket summaries.",
+        "details": {
+            "Problem": "Classify support tickets by category, sentiment, and urgency, and generate concise summaries.",
+            "Approach": "Few-shot prompt engineering with schema-constrained JSON generation.",
+            "Stack": "Hugging Face Transformers, Outlines, Pydantic.",
+            "Evaluation": "Framework measuring classification accuracy, structured-output validity, and overall success rate."
+        },
+        "tags": [
+            "LLMs",
+            "Prompt Engineering",
+            "Structured Outputs",
+            "Outlines",
+            "Pydantic"
+        ],
+        "repo_link": "https://github.com/islam281/Ticket_Classifier",
+        "demo_link": "#"
+    },
+    {
+        "id": "heart-disease",
+        "title": "Heart Disease Prediction",
+        "class": "heart",
+        "icon": "fas fa-heartbeat",
+        "summary": "End-to-end ML pipeline to predict heart disease from 630K clinical records.",
+        "details": {
+            "Problem": "Early detection of heart disease risk using patient health indicators.",
+            "Dataset": "630K clinical records.",
+            "Feature Engineering": "EDA, feature engineering, and Isolation Forest outlier detection.",
+            "Models": "Logistic Regression, Random Forest, XGBoost, with cross-validation and threshold tuning.",
+            "Metrics": "Accuracy, ROC-AUC, F1-score.",
+            "Results": "Best XGBoost: 92.65% test accuracy, 0.9847 ROC-AUC, 91.84% F1-score."
+        },
+        "tags": [
+            "Python",
+            "XGBoost",
+            "Healthcare AI"
+        ],
+        "repo_link": "https://gist.github.com/islam281/cc7ad0822b19e82c4da2f8d5d63bcc3a",
+        "demo_link": "#"
+    },
+    {
+        "id": "airline-delay",
+        "title": "Airline Delay Cause Prediction (DNN)",
+        "class": "stock",
+        "icon": "fas fa-plane-departure",
+        "summary": "Deep Neural Network that classifies airline delay causes from 318K+ records.",
+        "details": {
+            "Problem": "Multi-class classification of airline delay causes.",
+            "Dataset": "318K+ airline delay records.",
+            "Pipeline": "Data cleaning, feature engineering, train-test splitting, model training.",
+            "Models": "Deep Neural Network (TensorFlow/Keras).",
+            "Metrics": "Confusion matrix and classification report.",
+            "Results": "99.58% test accuracy with ~99% macro F1-score."
+        },
+        "tags": [
+            "Python",
+            "TensorFlow/Keras",
+            "DNN"
+        ],
+        "repo_link": "https://gist.github.com/islam281/9e204c9df4186ac34d8cbe8ba866a139",
+        "demo_link": "#"
+    },
+    {
+        "id": "breast-cancer",
+        "title": "Breast Cancer Classification",
+        "class": "medical",
+        "icon": "fas fa-notes-medical",
+        "summary": "ML classification pipeline to classify breast tumors as malignant or benign.",
+        "details": {
+            "Problem": "Classify breast tumors as malignant or benign to support diagnosis.",
+            "Dataset": "Breast Cancer dataset.",
+            "Models": "SVM kernels, Decision Tree with GridSearchCV, KNN.",
+            "Metrics": "Test accuracy, 5-fold cross-validation accuracy.",
+            "Results": "Best models: 98.25% test accuracy, mean 5-fold CV accuracy of 96.92%."
+        },
+        "tags": [
+            "Python",
+            "Scikit-learn",
+            "SVM"
+        ],
+        "repo_link": "https://gist.github.com/islam281/46211d5d72d0e067e8409653e36d89b8#file-breast_cancer_classification-ipynb",
+        "demo_link": "#"
+    },
+    {
+        "id": "churn-prediction",
+        "title": "Customer Churn Prediction",
+        "class": "churn",
+        "icon": "fas fa-user-minus",
+        "summary": "Predictive modeling to identify at-risk customers and improve retention strategies.",
+        "details": {
+            "Problem": "Classify telecom customers likely to cancel service to enable proactive retention.",
+            "Dataset": "Telco Customer Churn (Kaggle).",
+            "Feature Engineering": "One-hot encoding, tenure binning, scaling numerical features.",
+            "Models": "Logistic Regression, Random Forest, XGBoost.",
+            "Metrics": "F1-Score, ROC-AUC, Recall.",
+            "Results": "Achieved 0.82 ROC-AUC with 78% Recall on churn class."
+        },
+        "tags": [
+            "Python",
+            "XGBoost",
+            "Imbalanced Data"
+        ],
+        "repo_link": "#",
+        "demo_link": "#"
+    },
+    {
+        "id": "weather-forecasting",
+        "title": "Weather Forecasting",
+        "class": "weather",
+        "icon": "fas fa-cloud-sun-rain",
+        "summary": "Time-series forecasting model to predict daily temperature and rainfall.",
+        "details": {
+            "Problem": "Forecast next-day weather conditions using historical climate data.",
+            "Dataset": "NOAA Historical Weather Data.",
+            "Feature Engineering": "Lag features, rolling windows, seasonal decomposition.",
+            "Models": "LSTM (Recurrent Neural Network).",
+            "Metrics": "MAE (Mean Absolute Error), RMSE.",
+            "Results": "RMSE of 2.1°C on test set forecasts."
+        },
+        "tags": [
+            "Python",
+            "TensorFlow/Keras",
+            "Time Series"
+        ],
+        "repo_link": "#",
+        "demo_link": "#"
+    },
+    {
+        "id": "house-price",
+        "title": "House Price Prediction",
+        "class": "house",
+        "icon": "fas fa-home",
+        "summary": "Regression model to estimate property values based on features and location.",
+        "details": {
+            "Problem": "Predict continuous sale prices from multi-modal housing data.",
+            "Dataset": "Ames Housing Dataset.",
+            "Feature Engineering": "Handling missing values, log-transforming target, label encoding.",
+            "Models": "Gradient Boosting Regressor (GBR), Lasso Regression.",
+            "Metrics": "RMSE (Log Scale), R2 Score.",
+            "Results": "R2 Score of 0.89; Top 15% on leaderboard benchmarks."
+        },
+        "tags": [
+            "Python",
+            "Pandas",
+            "Regression"
+        ],
+        "repo_link": "#",
+        "demo_link": "#"
+    }
+]

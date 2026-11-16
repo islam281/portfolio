@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islam Amir - Machine Learning Engineer</title>
+    <title>Islam Amir - AI Engineer</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -14,7 +14,7 @@
             <div class="logo">
                 <div class="logo-text">
                     <h1 class="logo-name">Islam Amir</h1>
-                    <p class="logo-title">ML Engineer</p>
+                    <p class="logo-title">AI Engineer</p>
                 </div>
             </div>
             
@@ -45,10 +45,11 @@
     <main class="main-content">
         <!-- Home Section -->
         <section id="home" class="section active">
+            <canvas class="neural-bg" id="neuralBg" aria-hidden="true"></canvas>
             <div class="home-content">
                 <div class="home-text">
                     <h1 class="hero-title" id="hero-title">Data-Driven Solutions,<br>Intelligent Future.</h1>
-                    <p class="hero-subtitle" id="hero-subtitle">Machine Learning engineer building practical models for fraud, churn, pricing, NLP, and computer vision problems.</p>
+                    <p class="hero-subtitle" id="hero-subtitle">Junior AI Engineer building LLM applications, Arabic RAG pipelines, and machine learning models.</p>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary">Contact Me</a>
                         <a href="#projects" class="btn btn-secondary">View Projects</a>
@@ -56,7 +57,9 @@
                     </div>
                 </div>
                 <div class="home-visual">
-                    <img src="assets/robot.png" alt="AI Robot" class="robot-img">
+                    <div class="hero-photo-frame">
+                        <img src="assets/profile-hero.jpg" alt="Islam Amir" class="hero-photo">
+                    </div>
                 </div>
             </div>
         </section>
@@ -66,11 +69,8 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-container" id="about-container">
                 <div class="about-card">
-                    <p>Machine Learning Engineer with a background in Electronics and Communications Engineering, focused on building practical, business-aligned ML solutions.</p>
-                    <p>Experienced with Python, ML frameworks, and data analysis through applied projects and AI training programs, with a focus on clear evaluation and decision-ready insights.</p>
-                </div>
-                <div class="about-image-frame">
-                    <img src="assets/profile.jpg" alt="Islam Amir Mohamed Ali">
+                    <p>Junior AI Engineer with hands-on experience in machine learning, deep learning, and LLM applications, with a background in Electronics and Communications Engineering.</p>
+                    <p>Built an Arabic RAG pipeline with LangChain, ChromaDB, and hybrid retrieval, alongside an LLM-based support ticket classifier using prompt engineering and structured outputs. Currently training in Generative AI &amp; Agentic AI with the Digital Egypt Pioneers Initiative (DEPI).</p>
                 </div>
             </div>
         </section>
@@ -78,54 +78,54 @@
         <!-- USP Section - Why Hire Me -->
         <section id="usp" class="section">
             <h2 class="section-title">Why Hire Me</h2>
-            <p class="section-subtitle">What I bring to your ML team from day one</p>
+            <p class="section-subtitle">What I bring to your AI team from day one</p>
             <div class="usp-grid">
                 <div class="usp-card">
                     <div class="usp-icon">
-                        <i class="fas fa-project-diagram"></i>
+                        <i class="fas fa-comments"></i>
                     </div>
-                    <h3 class="usp-title">End-to-End ML Ownership</h3>
-                    <p class="usp-description">Projects cover data understanding, preprocessing, model training, evaluation, and iteration to reach deployable baselines.</p>
+                    <h3 class="usp-title">LLM Applications That Ship Structured Data</h3>
+                    <p class="usp-description">Builds LLM systems that return reliable, schema-validated JSON using few-shot prompting, Hugging Face Transformers, Outlines, and Pydantic, ready to plug into real workflows like support-ticket triage.</p>
                 </div>
                 
                 <div class="usp-card">
                     <div class="usp-icon">
-                        <i class="fas fa-balance-scale"></i>
+                        <i class="fas fa-magnifying-glass"></i>
                     </div>
-                    <h3 class="usp-title">Imbalanced Data Expertise</h3>
-                    <p class="usp-description">Fraud and churn projects focus on class imbalance, threshold tuning, and precision/recall tradeoffs instead of accuracy-only evaluation.</p>
+                    <h3 class="usp-title">RAG &amp; Arabic Retrieval</h3>
+                    <p class="usp-description">Designs RAG pipelines with LangChain and ChromaDB, Parent-Child chunking, and Dense, BM25, and Hybrid retrieval, including Arabic documents, a language many AI tools still handle poorly.</p>
+                </div>
+                
+                <div class="usp-card">
+                    <div class="usp-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="usp-title">Agentic AI Ready</h3>
+                    <p class="usp-description">Training in Generative AI &amp; Agentic AI with DEPI, working with LangGraph, tool calling, and multi-step agent workflows.</p>
                 </div>
                 
                 <div class="usp-card">
                     <div class="usp-icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
-                    <h3 class="usp-title">Metrics That Matter</h3>
-                    <p class="usp-description">Selects metrics by business cost: PR/ROC for fraud, F1 for churn, and RMSE for pricing to reflect real decision impact.</p>
+                    <h3 class="usp-title">Evaluation-First Mindset</h3>
+                    <p class="usp-description">Measures before claiming results: retrieval experiments against reference sources, output-validity and success-rate checks for LLMs, and ROC-AUC, F1, cross-validation, and threshold tuning for ML models.</p>
                 </div>
                 
                 <div class="usp-card">
                     <div class="usp-icon">
-                        <i class="fas fa-code-branch"></i>
+                        <i class="fas fa-layer-group"></i>
                     </div>
-                    <h3 class="usp-title">Production-Ready Code</h3>
-                    <p class="usp-description">Structures experiments with clear preprocessing, training, and evaluation steps to keep work reproducible and maintainable.</p>
+                    <h3 class="usp-title">Strong ML &amp; Deep Learning Foundation</h3>
+                    <p class="usp-description">Solid grounding in classical ML and deep learning (XGBoost, SVM, DNNs, CNNs, LSTMs) on large real datasets, from 318K+ to 630K records, so LLM work rests on real fundamentals.</p>
                 </div>
                 
                 <div class="usp-card">
                     <div class="usp-icon">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-microchip"></i>
                     </div>
-                    <h3 class="usp-title">Stakeholder Communication</h3>
-                    <p class="usp-description">Translates model outputs into business language, turning metrics into risk, revenue, and customer impact discussions.</p>
-                </div>
-                
-                <div class="usp-card">
-                    <div class="usp-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                    <h3 class="usp-title">Real-World Problem Solver</h3>
-                    <p class="usp-description">Portfolio spans fraud detection, churn prediction, pricing, recommendations, NLP, and computer vision across real business contexts.</p>
+                    <h3 class="usp-title">Engineering Background</h3>
+                    <p class="usp-description">Electronics &amp; Communications engineer with experience designing real systems and working with engineering teams, bringing system thinking and clear communication to AI projects.</p>
                 </div>
             </div>
         </section>
@@ -303,7 +303,6 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
 
@@ -333,7 +332,6 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
 
@@ -363,7 +361,6 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
 
@@ -393,7 +390,6 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
 
@@ -423,7 +419,6 @@
                     </div>
                     <div class="project-links">
                         <a href="#" class="btn-code btn-disabled" aria-disabled="true"><i class="fab fa-github"></i> GitHub Repo</a>
-                        <a href="#" class="btn-demo btn-disabled" aria-disabled="true"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                     </div>
                 </div>
             </div>
@@ -602,7 +597,7 @@
         <!-- Contact Section -->
         <section id="contact" class="section">
             <h2 class="section-title">Contact Me</h2>
-            <p class="contact-intro">If you are hiring for ML or Data Scientist roles, I would love to connect and discuss how I can contribute.</p>
+            <p class="contact-intro">If you are hiring for AI Engineer, ML or Data Scientist roles, I would love to connect and discuss how I can contribute.</p>
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="contact-item">
@@ -632,7 +627,10 @@
                     </div>
                 </div>
                 
-                <form class="contact-form">
+                <form class="contact-form" action="https://formsubmit.co/mr.islamamir@gmail.com" method="POST" data-ajax-action="https://formsubmit.co/ajax/mr.islamamir@gmail.com" data-fallback-email="mr.islamamir@gmail.com">
+                    <input type="hidden" name="_subject" value="New portfolio message">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
@@ -656,7 +654,7 @@
         </section>
     </main>
 
-    <script src="config.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

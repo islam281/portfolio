@@ -1,6 +1,7 @@
 // ===== DOM Elements =====
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('.section');
+let dynamicHeroSubtitle = "Junior AI Engineer building LLM applications, Arabic RAG pipelines, and machine learning models.";
 
 // ===== Navigation - Scroll Based =====
 function initNavigation() {
@@ -109,19 +110,84 @@ function closeMobileMenu() {
 function initContactForm() {
     const form = document.querySelector('.contact-form');
     if (!form) return;
-    
-    form.addEventListener('submit', (e) => {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const status = form.querySelector('.form-status');
+
+    const setFormStatus = (message, type = '') => {
+        if (status) {
+            status.textContent = message;
+            status.className = `form-status ${type}`.trim();
+        }
+    };
+
+    const openEmailFallback = (data) => {
+        const fallbackEmail = form.dataset.fallbackEmail || 'mr.islamamir@gmail.com';
+        const subject = data.subject || `Portfolio contact from ${data.name}`;
+        const body = [
+            data.message,
+            '',
+            `Name: ${data.name}`,
+            `Email: ${data.email}`
+        ].join('\n');
+
+        const gmailUrl = new URL('https://mail.google.com/mail/');
+        gmailUrl.searchParams.set('view', 'cm');
+        gmailUrl.searchParams.set('fs', '1');
+        gmailUrl.searchParams.set('to', fallbackEmail);
+        gmailUrl.searchParams.set('su', subject);
+        gmailUrl.searchParams.set('body', body);
+
+        window.location.href = gmailUrl.toString();
+    };
+
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
-        
-        // Here you would typically send the data to a server
-        console.log('Form submitted:', data);
-        
-        // Show success message
-        alert('Thank you for your message! I will get back to you soon.');
-        form.reset();
+        data.name = (data.name || '').trim();
+        data.email = (data.email || '').trim();
+        data.subject = (data.subject || '').trim();
+        data.message = (data.message || '').trim();
+
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
+
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 8000);
+
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        }
+        setFormStatus('Sending your message...', 'loading');
+
+        try {
+            const response = await fetch(form.dataset.ajaxAction || form.action, {
+                method: 'POST',
+                headers: { Accept: 'application/json' },
+                body: formData,
+                signal: controller.signal
+            });
+
+            if (!response.ok) {
+                throw new Error('Form service is unavailable.');
+            }
+
+            setFormStatus('Message sent successfully. Thank you for reaching out!', 'success');
+            form.reset();
+        } catch (error) {
+            setFormStatus('Email service is unavailable. Opening Gmail instead...', 'error');
+            openEmailFallback(data);
+        } finally {
+            clearTimeout(timeout);
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+            }
+        }
     });
 }
 
@@ -148,7 +214,7 @@ function initTypingEffect() {
     const heroSubtitle = document.querySelector('.hero-subtitle');
     if (!heroSubtitle) return;
     
-    const text = "Machine Learning engineer building practical models for fraud, churn, pricing, NLP, and computer vision problems.";
+    const text = dynamicHeroSubtitle;
     heroSubtitle.innerHTML = '';
     
     let i = 0;
@@ -305,9 +371,199 @@ function initThemeToggle() {
     });
 }
 
+// ===== Neural Network Background (Home) =====
+function initNeuralBackground() {
+    const canvas = document.getElementById('neuralBg');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const section = document.getElementById('home');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let width = 0, height = 0, dpr = 1;
+    let nodes = [], edges = [], pulses = [];
+    let running = true, rafId = null, lastSpawn = 0;
+    const mouse = { x: -9999, y: -9999 };
+
+    const getColors = () => {
+        const cs = getComputedStyle(document.documentElement);
+        const light = document.documentElement.getAttribute('data-theme') === 'light';
+        if (light) {
+            // Gold network in Light Mode
+            return { cyan: '#b8860b', green: '#e6a817', lineAlpha: 0.35, nodeAlpha: 0.75 };
+        }
+        return {
+            cyan: cs.getPropertyValue('--accent-cyan').trim() || '#00bfff',
+            green: cs.getPropertyValue('--accent-green').trim() || '#00e676',
+            lineAlpha: 0.16,
+            nodeAlpha: 0.6
+        };
+    };
+    let colors = getColors();
+
+    const hexToRgb = (hex) => {
+        const h = hex.replace('#', '');
+        const full = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+        const n = parseInt(full, 16);
+        return `${(n >> 16) & 255}, ${(n >> 8) & 255}, ${n & 255}`;
+    };
+
+    function build() {
+        const rect = canvas.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = rect.width;
+        height = rect.height;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const count = Math.max(28, Math.min(90, Math.round((width * height) / 18000)));
+        nodes = Array.from({ length: count }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.25,
+            vy: (Math.random() - 0.5) * 0.25,
+            r: 1.5 + Math.random() * 2,
+            glow: 0
+        }));
+        pulses = [];
+    }
+
+    function computeEdges() {
+        const maxDist = Math.min(180, Math.max(120, width / 9));
+        edges = [];
+        for (let i = 0; i < nodes.length; i++) {
+            for (let j = i + 1; j < nodes.length; j++) {
+                const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+                if (d < maxDist) edges.push({ a: i, b: j, s: 1 - d / maxDist });
+            }
+        }
+    }
+
+    function spawnPulse() {
+        if (!edges.length) return;
+        const e = edges[Math.floor(Math.random() * edges.length)];
+        const forward = Math.random() < 0.5;
+        pulses.push({
+            from: forward ? e.a : e.b,
+            to: forward ? e.b : e.a,
+            t: 0,
+            speed: 0.012 + Math.random() * 0.018,
+            hops: 2 + Math.floor(Math.random() * 3)
+        });
+    }
+
+    function step(now) {
+        for (const n of nodes) {
+            n.x += n.vx; n.y += n.vy;
+            if (n.x < 0 || n.x > width) n.vx *= -1;
+            if (n.y < 0 || n.y > height) n.vy *= -1;
+            const md = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+            if (md < 140) n.glow = Math.max(n.glow, 1 - md / 140);
+            n.glow *= 0.96;
+        }
+        computeEdges();
+
+        if (now - lastSpawn > 220 && pulses.length < 28) { spawnPulse(); lastSpawn = now; }
+
+        // Electric signals travel along connections and hop to neighbouring neurons
+        for (let i = pulses.length - 1; i >= 0; i--) {
+            const p = pulses[i];
+            p.t += p.speed;
+            if (p.t >= 1) {
+                nodes[p.to].glow = 1;
+                p.hops--;
+                const next = edges.filter(e => (e.a === p.to || e.b === p.to) && e.a !== p.from && e.b !== p.from);
+                if (p.hops > 0 && next.length) {
+                    const e = next[Math.floor(Math.random() * next.length)];
+                    p.from = p.to;
+                    p.to = e.a === p.to ? e.b : e.a;
+                    p.t = 0;
+                } else {
+                    pulses.splice(i, 1);
+                }
+            }
+        }
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+        const cyan = hexToRgb(colors.cyan), green = hexToRgb(colors.green);
+
+        ctx.lineWidth = 1;
+        for (const e of edges) {
+            const a = nodes[e.a], b = nodes[e.b];
+            ctx.strokeStyle = `rgba(${cyan}, ${colors.lineAlpha * e.s})`;
+            ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+
+        for (const p of pulses) {
+            const a = nodes[p.from], b = nodes[p.to];
+            const x = a.x + (b.x - a.x) * p.t, y = a.y + (b.y - a.y) * p.t;
+            const tail = Math.max(0, p.t - 0.25);
+            const tx = a.x + (b.x - a.x) * tail, ty = a.y + (b.y - a.y) * tail;
+            const grad = ctx.createLinearGradient(tx, ty, x, y);
+            grad.addColorStop(0, `rgba(${green}, 0)`);
+            grad.addColorStop(1, `rgba(${green}, 0.9)`);
+            ctx.strokeStyle = grad; ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(tx, ty); ctx.lineTo(x, y); ctx.stroke();
+            ctx.fillStyle = `rgba(${green}, 1)`;
+            ctx.shadowColor = colors.green; ctx.shadowBlur = 12;
+            ctx.beginPath(); ctx.arc(x, y, 2.2, 0, Math.PI * 2); ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+
+        for (const n of nodes) {
+            const g = n.glow;
+            if (g > 0.05) {
+                ctx.shadowColor = colors.green; ctx.shadowBlur = 18 * g;
+                ctx.fillStyle = `rgba(${green}, ${0.4 + 0.6 * g})`;
+            } else {
+                ctx.fillStyle = `rgba(${cyan}, ${colors.nodeAlpha})`;
+            }
+            ctx.beginPath(); ctx.arc(n.x, n.y, n.r + g * 2, 0, Math.PI * 2); ctx.fill();
+            ctx.shadowBlur = 0;
+        }
+    }
+
+    function loop(now) {
+        if (!running) { rafId = null; return; }
+        step(now);
+        draw();
+        rafId = requestAnimationFrame(loop);
+    }
+
+    const start = () => { running = true; if (!rafId && !reduceMotion) rafId = requestAnimationFrame(loop); };
+    const stop = () => { running = false; };
+
+    build();
+    computeEdges();
+    if (reduceMotion) draw(); else start();
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => { build(); computeEdges(); if (reduceMotion) draw(); }, 150);
+    });
+
+    // Pause when Home is off-screen or the tab is hidden
+    new IntersectionObserver(([entry]) => { entry.isIntersecting ? start() : stop(); }).observe(section);
+    document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
+
+    section.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left; mouse.y = e.clientY - rect.top;
+    });
+    section.addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
+
+    // Follow theme changes
+    new MutationObserver(() => { colors = getColors(); if (reduceMotion) draw(); })
+        .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+}
+
 // ===== Initialize Everything =====
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle(); // Initialize theme first to avoid flash
+    initNeuralBackground();
     addAnimationStyles();
     initNavigation();
     initMobileMenu();
@@ -315,15 +571,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initContactForm();
     initSmoothScroll();
     initScrollAnimations();
-    initTypingEffect();
-    initAccordion();
+    // initAccordion(); // moved to renderExperience
     
-    // Trigger animations for initially visible elements
-    setTimeout(() => {
-        document.querySelectorAll('.section.active .skill-card, .section.active .project-card, .section.active .course-card, .section.active .contact-item').forEach(el => {
-            el.classList.add('animate-in');
-        });
-    }, 100);
+    // Load Dynamic Data
+    loadPortfolioData();
 });
 
 // ===== Accordion for Work Experience =====
@@ -350,4 +601,207 @@ function initAccordion() {
     if (accordionItems.length > 0) {
         accordionItems[0].classList.add('active');
     }
+}
+
+// ===== Data Loading =====
+async function loadPortfolioData() {
+    try {
+        const [profile, skills, projects, education, courses, experience] = await Promise.all([
+            fetchPortfolioData('profile'),
+            fetchPortfolioData('skills'),
+            fetchPortfolioData('projects'),
+            fetchPortfolioData('education'),
+            fetchPortfolioData('courses'),
+            fetchPortfolioData('experience')
+        ]);
+
+        renderProfile(profile);
+        initTypingEffect();
+        renderSkills(skills);
+        renderProjects(projects);
+        renderEducation(education);
+        renderCourses(courses);
+        renderExperience(experience);
+        
+        // Re-trigger animations after content load
+        setTimeout(() => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.skill-card, .project-card, .course-card, .contact-item').forEach(card => {
+                observer.observe(card);
+            });
+        }, 100);
+
+    } catch (error) {
+        console.error('Error loading portfolio data:', error);
+    }
+}
+
+async function fetchPortfolioData(name) {
+    const fallback = window.PORTFOLIO_DATA && window.PORTFOLIO_DATA[name];
+    try {
+        const response = await fetch(`data/${name}.json`);
+        if (!response.ok) {
+            throw new Error(`Could not load data/${name}.json`);
+        }
+        return await response.json();
+    } catch (error) {
+        // Opening index.html directly (file://) blocks fetch, so use the embedded copy from js/data.js
+        if (fallback) return fallback;
+        throw error;
+    }
+}
+
+function renderProfile(data) {
+    // Hero
+    document.getElementById('hero-title').innerHTML = data.hero.title.replace('\n', '<br>');
+    document.getElementById('hero-subtitle').textContent = data.hero.subtitle;
+    dynamicHeroSubtitle = data.hero.subtitle;
+    
+    // About
+    const aboutContainer = document.getElementById('about-container');
+    if (aboutContainer) {
+        aboutContainer.innerHTML = `
+            <div class="about-card">
+                <p>${data.about.text_primary}</p>
+                <p>${data.about.text_secondary}</p>
+            </div>
+        `;
+    }
+    
+    // Header Logo
+    const logoName = document.querySelector('.logo-name');
+    const logoTitle = document.querySelector('.logo-title');
+    if (logoName) logoName.textContent = data.name;
+    if (logoTitle) logoTitle.textContent = data.title;
+}
+
+function renderSkills(data) {
+    const container = document.getElementById('skills-container');
+    if (!container) return;
+    
+    container.innerHTML = data.map(category => `
+        <div class="skill-card">
+            <div class="skill-header">
+                <i class="${category.icon} skill-icon"></i>
+                <h3>${category.title}</h3>
+            </div>
+            <ul class="skill-list">
+                ${category.skills.map(skill => `
+                    <li><i class="${skill.icon}"></i> ${skill.name}</li>
+                `).join('')}
+            </ul>
+        </div>
+    `).join('');
+}
+
+function renderProjects(data) {
+    const container = document.getElementById('projects-container');
+    if (!container) return;
+    
+    container.innerHTML = data.map(project => `
+        <div class="project-card">
+            <div class="project-thumbnail">
+                <div class="thumbnail-placeholder ${project.class || ''}">
+                    <i class="${project.icon} project-icon"></i>
+                </div>
+            </div>
+            <h3 class="project-title">${project.title}</h3>
+            <div class="project-description">
+                <p class="project-summary">${project.summary}</p>
+                <ul class="project-details">
+                    ${Object.entries(project.details).map(([key, value]) => `
+                        <li><span class="detail-label">${key}:</span> ${value}</li>
+                    `).join('')}
+                </ul>
+            </div>
+            <div class="project-tags">
+                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+            <div class="project-links">
+                <a href="${project.repo_link}" class="btn-code ${project.repo_link === '#' ? 'btn-disabled' : ''}" ${project.repo_link === '#' ? 'aria-disabled="true"' : ''}>
+                    <i class="fab fa-github"></i> GitHub Repo
+                </a>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderEducation(data) {
+    const container = document.getElementById('education-container');
+    if (!container) return;
+    
+    container.innerHTML = data.map(item => `
+        <div class="course-card">
+            <div class="course-header">
+                <i class="${item.icon} course-icon"></i>
+                <span class="course-year">${item.year}</span>
+            </div>
+            <h3 class="course-title">${item.title}</h3>
+            <p class="course-org">${item.org}</p>
+            <p class="course-description">${item.description}</p>
+            <div class="course-tags">
+                ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderCourses(data) {
+    const container = document.getElementById('courses-container');
+    if (!container) return;
+    
+    // Re-use same card style as education
+    container.innerHTML = data.map(item => `
+        <div class="course-card">
+            <div class="course-header">
+                <i class="${item.icon} course-icon"></i>
+                <span class="course-year">${item.year}</span>
+            </div>
+            <h3 class="course-title">${item.title}</h3>
+            <p class="course-org">${item.org}</p>
+            <p class="course-description">${item.description}</p>
+            <div class="course-tags">
+                ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderExperience(data) {
+    const container = document.getElementById('experience-container');
+    if (!container) return;
+    
+    container.innerHTML = data.map(item => `
+        <div class="accordion-item">
+            <button class="accordion-header">
+                <div class="accordion-icon">
+                    <i class="${item.icon}"></i>
+                </div>
+                <div class="accordion-info">
+                    <h3 class="accordion-title">${item.role}</h3>
+                    <p class="accordion-company">${item.company}</p>
+                </div>
+                <span class="accordion-duration">${item.duration}</span>
+                <i class="fas fa-chevron-down accordion-arrow"></i>
+            </button>
+            <div class="accordion-content">
+                <ul class="experience-list">
+                    ${item.description.map(desc => `<li>${desc}</li>`).join('')}
+                </ul>
+                <div class="experience-skills">
+                    ${item.skills.map(skill => `<span class="tag">${skill}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    // Re-initialize accordion logic after rendering
+    initAccordion();
 }

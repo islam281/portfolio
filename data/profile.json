@@ -1,0 +1,20 @@
+{
+    "name": "Islam Amir",
+    "title": "AI Engineer",
+    "hero": {
+        "title": "Data-Driven Solutions,<br>Intelligent Future.",
+        "subtitle": "Junior AI Engineer building LLM applications, Arabic RAG pipelines, and machine learning models."
+    },
+    "about": {
+        "text_primary": "Junior AI Engineer with hands-on experience in machine learning, deep learning, and LLM applications, with a background in Electronics and Communications Engineering.",
+        "text_secondary": "Built an Arabic RAG pipeline with LangChain, ChromaDB, and hybrid retrieval, alongside an LLM-based support ticket classifier using prompt engineering and structured outputs. Currently training in Generative AI & Agentic AI with the Digital Egypt Pioneers Initiative (DEPI).",
+        "image": "assets/profile.jpg"
+    },
+    "socials": {
+        "email": "mr.islamamir@gmail.com",
+        "location": "Abbasia, Cairo, Egypt",
+        "phone": "+20 100 708 3866",
+        "linkedin": "https://www.linkedin.com/in/islamamir10",
+        "github": "https://github.com/islam281"
+    }
+}

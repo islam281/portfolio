@@ -1,0 +1,26 @@
+[
+    {
+        "role": "Low Current Designer",
+        "company": "Electrical Design Office (MEP-LES) | Cairo",
+        "duration": "Jan 2018 - Jan 2020",
+        "icon": "fas fa-bolt",
+        "description": [
+            "Designed CCTV, fire alarm, and access control systems",
+            "Worked with engineering teams to deliver optimized solutions",
+            "Applied analytical problem-solving and system optimization techniques to improve design efficiency"
+        ],
+        "skills": ["Systems Design", "Technical Documentation", "Cross-team Collaboration", "Problem Solving"]
+    },
+    {
+        "role": "Small Business Supervisor",
+        "company": "Traffic Town (Educational Entertainment Center) | Cairo",
+        "duration": "Jan 2017 - Jan 2019",
+        "icon": "fas fa-users-cog",
+        "description": [
+            "Managed operations and improved workflow efficiency",
+            "Coordinated staff and customer service delivery",
+            "Trained and mentored junior staff members to improve service quality"
+        ],
+        "skills": ["Operations Management", "Training & Communication", "Team Leadership"]
+    }
+]

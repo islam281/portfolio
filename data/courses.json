@@ -1,0 +1,50 @@
+[
+    {
+        "year": "07/2026 - Present",
+        "title": "Generative AI & Agentic AI",
+        "org": "Digital Egypt Pioneers Initiative (DEPI)",
+        "icon": "fas fa-robot",
+        "description": "Training track in generative AI and agentic AI: LLMs, prompt engineering, RAG, LangChain, LangGraph, tool calling, and agent workflows.",
+        "tags": ["Generative AI", "Agentic AI", "LLMs", "LangGraph"]
+    },
+    {
+        "year": "10/2025 - 02/2026",
+        "title": "Data Analysis for Machine Learning",
+        "org": "CREATIVA",
+        "icon": "fas fa-chart-bar",
+        "description": "Data analysis techniques for machine learning applications, covering data preprocessing, EDA, visualization, and feature engineering.",
+        "tags": ["Pandas", "EDA", "Feature Engineering"]
+    },
+    {
+        "year": "05/2025 - 06/2025",
+        "title": "AI Track",
+        "org": "Huawei & NTI Egyptian Talents Academy (ETA)",
+        "icon": "fas fa-brain",
+        "description": "Focused on Artificial Intelligence concepts, Python-based ML models, and data analysis.",
+        "tags": ["Python", "Machine Learning", "AI"]
+    },
+    {
+        "year": "Self-paced",
+        "title": "Deep Learning, Computer Vision and NLP Course",
+        "org": "YouTube Playlist",
+        "icon": "fas fa-brain",
+        "description": "Training-focused course covering deep learning fundamentals, neural networks, CNNs, RNNs, computer vision, image classification, transfer learning, object detection, OCR, NLP basics, text preprocessing, word embeddings, text classification, clustering, sentiment analysis, NER, translation, text generation, and chatbot basics.",
+        "tags": ["Deep Learning", "Computer Vision", "NLP"]
+    },
+    {
+        "year": "2018",
+        "title": "Automotive Embedded Systems Course",
+        "org": "Professional Development",
+        "icon": "fas fa-car",
+        "description": "Introduction to AUTOSAR, CAN protocols, and automotive safety standards.",
+        "tags": ["AUTOSAR", "CAN"]
+    },
+    {
+        "year": "2016",
+        "title": "Embedded Systems Diploma",
+        "org": "AMIT",
+        "icon": "fas fa-microchip",
+        "description": "Covered microcontrollers, C programming, microcontroller architecture, and real-time systems.",
+        "tags": ["C", "Microcontrollers", "RTOS"]
+    }
+]
